@@ -4,6 +4,7 @@ import java.util.Random;
 
 import Akuto2Mod.Akuto2Core;
 import Akuto2Mod.Pattern.FillerPatternCore;
+import Akuto2Mod.Utils.AchievementHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -15,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 
 public class CommonEventHandler{
 
@@ -23,6 +25,18 @@ public class CommonEventHandler{
 		System.out.println("test");
 		if(Akuto2Core.update != null) {
 			Akuto2Core.update.notifyUpdate(event.player, Side.CLIENT);
+		}
+	}
+
+	@SubscribeEvent
+	public void EntityItemPickupEvent(EntityItemPickupEvent e) {
+		if(e.entityPlayer != null && e.item != null && e.item.getEntityItem() != null) {
+			if(e.item.getEntityItem().getItem() == Akuto2Core.coreElementary1) {
+				e.entityPlayer.triggerAchievement(AchievementHandler.getFeather);
+			}
+			if(e.item.getEntityItem().getItem() == Akuto2Core.coreElementary2) {
+				e.entityPlayer.triggerAchievement(AchievementHandler.getLeather);
+			}
 		}
 	}
 

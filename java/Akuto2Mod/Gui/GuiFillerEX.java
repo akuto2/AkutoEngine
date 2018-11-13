@@ -9,6 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiFillerEX extends GuiContainer{
 	private static final ResourceLocation tex = new ResourceLocation("akutoengine:textures/gui/filler_gui.png");
+	private static final ResourceLocation blockTex = new ResourceLocation("akutoengine:textures/gui/filler_gui_block.png");
 	IInventory playerInventory;
 	TileFillerEX fillerEX;
 

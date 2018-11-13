@@ -1,5 +1,6 @@
 package Akuto2Mod.Items;
 
+import Akuto2Mod.Utils.AchievementHandler;
 import buildcraft.api.core.Position;
 import buildcraft.core.lib.engines.ItemEngine;
 import buildcraft.core.lib.engines.TileEngineBase;
@@ -27,6 +28,17 @@ public class ItemAutoEngine extends ItemEngine{
     {
         return StatCollector.translateToLocal(this.getUnlocalizedName(par1ItemStack));
     }
+
+	@Override
+	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+		if(stack.getItemDamage() == 0) {
+			player.triggerAchievement(AchievementHandler.getAkutoEngine);
+		}
+		if(stack.getItemDamage() == 6) {
+			player.triggerAchievement(AchievementHandler.getSuperEngine);
+		}
+		super.onCreated(stack, world, player);
+	}
 
     @Override
 	public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata)

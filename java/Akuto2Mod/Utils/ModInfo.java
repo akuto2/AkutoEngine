@@ -8,7 +8,7 @@ public class ModInfo {
 		meta.modId = "AkutoEngine";
 		meta.name = "AkutoEngine";
 		meta.description = "Add engine and many machines";
-		meta.version = "1.3.4";
+		meta.version = "1.3.7";
 		meta.url = "https://minecraft.curseforge.com/projects/akuto-engine";
 		meta.updateUrl = "https://raw.githubusercontent.com/akuto2/akutoengine/master/AkutoEngine-Update.json";
 		meta.authorList.add("akuto2");
