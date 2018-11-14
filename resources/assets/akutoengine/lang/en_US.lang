@@ -38,13 +38,16 @@ fillerPattern.8.name=Wall Creation Module
 fillerPattern.9.name=Flooring Module
 fillerPattern.10.name=Equidistant Installation Module
 fillerPattern.11.name=Tower Module
+fillerPattern.12.name=Liquid Erase Module
+fillerPattern.13.name=Hoe Module
+fillerPattern.14.name=Quarry Module
 tile.tankEX.name=TankEX
 tile.fillerEX.name=FillerEX
 
 achievement.getAkutoEngine=Is this ... a wooden engine?
 achievement.getSuperEngine=§5The finest engine!§r
 achievement.getTank=2.3 million cups of liquid!
-achievement.getFiller=Remember ver 1.2.5!
+achievement.getFiller=Remember BC3.1.x!
 achievement.getPump=Just suck in and suck!
 achievement.getFeather=§eSuper engine material part1§r
 achievement.getLeather=§eSuper engine material part2§r

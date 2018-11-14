@@ -43,13 +43,19 @@ public class TileFillerEX extends TileBuildCraftEX implements IInventory, IHasWo
 		setBattery(new RFBattery(100, 100, 0));
 	}
 
-	// エネルギー設定用
+	/**
+	 * エネルギーを設定するメソッド
+	 * @param work 動くのに必要なエネルギー量
+	 * @param max 受け取るエネルギー量*work*10される
+	 */
 	public void setPower(int work, int max) {
 		setBattery(new RFBattery(work * max * 10, work * max * 10, 0));
 		workEnergy = work;
 	}
 
-	// ポジション初期化
+	/**
+	 * 初期位置を設定するメソッド
+	 */
 	public void initTargetPosition() {
 		sx = (int)box.pMin().x;
 		sy = (int)box.pMin().y;
@@ -63,7 +69,9 @@ public class TileFillerEX extends TileBuildCraftEX implements IInventory, IHasWo
 		now = 0;
 	}
 
-	// 向き初期化
+	/**
+	 * 初期の向きを設定するメソッド
+	 */
 	public void initRotationPosition() {
 		sy = (int)box.pMin().y;
 		ey = (int)box.pMax().y;
@@ -96,7 +104,9 @@ public class TileFillerEX extends TileBuildCraftEX implements IInventory, IHasWo
 	}
 
 
-	// 初期化処理
+	/**
+	 * 初期化処理
+	 */
 	@Override
 	public void initialize() {
 		super.initialize();
@@ -128,7 +138,9 @@ public class TileFillerEX extends TileBuildCraftEX implements IInventory, IHasWo
 		}
 	}
 
-	// 主にここでフィラーの処理をする
+	/**
+	 * フィラーの動作メソッド
+	 */
 	public void doWork() {
 		if(worldObj.isRemote) {
 			return;
@@ -177,7 +189,9 @@ public class TileFillerEX extends TileBuildCraftEX implements IInventory, IHasWo
 		}
 	}
 
-	// レシピ読み取り
+	/**
+	 * レシピを読み取り設定するメソッド
+	 */
 	public void computeRecipe() {
 		if(worldObj.isRemote) {
 			return;

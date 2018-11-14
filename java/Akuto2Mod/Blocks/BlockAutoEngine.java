@@ -2,7 +2,6 @@ package Akuto2Mod.Blocks;
 
 import java.util.List;
 
-import Akuto2Mod.Akuto2Core;
 import Akuto2Mod.TileEntity.Engine.TileAutoEngine;
 import Akuto2Mod.TileEntity.Engine.TileAutoEngine128;
 import Akuto2Mod.TileEntity.Engine.TileAutoEngine2048;
@@ -29,7 +28,7 @@ public class BlockAutoEngine extends BlockEngine {
 	private static IIcon woodIcon;
 
 	public BlockAutoEngine() {
-		setCreativeTab(Akuto2Core.tabAkutoEngine);
+
 	}
 
 	@Override

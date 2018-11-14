@@ -2,17 +2,25 @@ package Akuto2Mod.Items;
 
 import java.util.List;
 
+import Akuto2Mod.Utils.AchievementHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 
 public class ItemBlockTankEX extends ItemBlock{
 	public ItemBlockTankEX(Block tank){
 		super(tank);
 		setMaxDamage(0);
+	}
+
+	@Override
+	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+		player.triggerAchievement(AchievementHandler.getTank);
+		super.onCreated(stack, world, player);
 	}
 
 	@Override
