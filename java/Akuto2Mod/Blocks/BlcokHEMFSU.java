@@ -1,20 +1,10 @@
 package Akuto2Mod.Blocks;
 
-<<<<<<< HEAD
 import ic2.core.block.TileEntityBlock;
 import ic2.core.util.StackUtil;
 
 import java.util.List;
 
-=======
-import java.util.List;
-
-import Akuto2Mod.TileEntity.TileEntityHemfsu;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ic2.core.block.TileEntityBlock;
-import ic2.core.util.StackUtil;
->>>>>>> mc1.7.10
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -23,13 +13,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-<<<<<<< HEAD
 import Akuto2Mod.Akuto2Core;
 import Akuto2Mod.TileEntity.TileEntityHemfsu;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-=======
->>>>>>> mc1.7.10
 
 
 public class BlcokHEMFSU extends BlockUMFSU {
@@ -48,10 +35,7 @@ public class BlcokHEMFSU extends BlockUMFSU {
 
 	public BlcokHEMFSU(){
 		super();
-<<<<<<< HEAD
 		setCreativeTab(Akuto2Core.tabAkutoEngine);
-=======
->>>>>>> mc1.7.10
 		setHardness(1.5F);
 		setStepSound(soundTypeMetal);
 		setBlockName("HEMFSU");

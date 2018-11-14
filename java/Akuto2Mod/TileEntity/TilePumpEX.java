@@ -6,19 +6,11 @@ import java.util.LinkedList;
 import java.util.Set;
 import java.util.TreeMap;
 
-<<<<<<< HEAD
-=======
-import Akuto2Mod.Utils.WorldHelper;
-import Akuto2Mod.Utils.Blocks.AdjacentLiquids;
->>>>>>> mc1.7.10
 import buildcraft.BuildCraftCore;
 import buildcraft.BuildCraftFactory;
 import buildcraft.api.core.BlockIndex;
 import buildcraft.api.core.SafeTimeTracker;
-<<<<<<< HEAD
 import buildcraft.api.tiles.IHasWork;
-=======
->>>>>>> mc1.7.10
 import buildcraft.core.lib.EntityBlock;
 import buildcraft.core.lib.RFBattery;
 import buildcraft.core.lib.TileBuffer;
@@ -32,46 +24,25 @@ import buildcraft.factory.FactoryProxy;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-<<<<<<< HEAD
-=======
-import net.minecraft.init.Blocks;
->>>>>>> mc1.7.10
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
-<<<<<<< HEAD
 public class TilePumpEX extends TileBuildCraft implements IHasWork{
 
 	private int capacity = 1000000;
 	public int internalLiquid;
-=======
-public class TilePumpEX extends TileBuildCraft{
-
-	private int capacity = 1000000;
-	public int internalLiquid = 0;
->>>>>>> mc1.7.10
 	private EntityBlock tube;
 	private double tubeY = Double.NaN;
 	private int aimY = 0;
 	private int type;
-<<<<<<< HEAD
-=======
-	private double tubeSpeed = 0.1D;
->>>>>>> mc1.7.10
 	private TreeMap<Integer, Deque<BlockIndex>> pumpLayerQueues = new TreeMap();
 	private boolean powered = false;
 	private SafeTimeTracker timer = new SafeTimeTracker(512L);
 	private SafeTimeTracker updateTracker = new SafeTimeTracker(Math.max(16, BuildCraftCore.updateFactor));
 	private int tick = Utils.RANDOM.nextInt(32);
-<<<<<<< HEAD
 	public boolean doWork = false;
-=======
-	public boolean liquidsInit = false;
-	public boolean doWork = false;
-	private AdjacentLiquids pumpableBlocks;
->>>>>>> mc1.7.10
 	private int numFluidBlocksFound = 0;
 	public SingleUseTank tank = new SingleUseTank("tank", capacity, this);
 	public static Fluid WATER = FluidRegistry.WATER;
@@ -80,45 +51,12 @@ public class TilePumpEX extends TileBuildCraft{
 	private boolean initialized = false;
 
 	public void initTilePumpEX() {
-<<<<<<< HEAD
 		this.type = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
 		setProviderConfigure(type);
 		initialized = true;
 	}
 
 	public void setProviderConfigure(int type) {
-=======
-		type = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
-		setProviderConfigure(type);
-		initialized = true;
-		createTube();
-	}
-
-	public void setAim(int y, Block block) {
-		liquidsInit = true;
-		fluidStack = BlockUtils.drainBlock(block, worldObj, xCoord, y, zCoord, false);
-		aimY = y;
-		pumpableBlocks.setPosition(worldObj, xCoord, y, zCoord);
-		pumpableBlocks.setTarget(block, 0);
-		if(type >= 2) {
-			pumpableBlocks.ice = Blocks.ice;
-		}
-		if(type == 1) {
-			pumpableBlocks.setRange(0);
-		}
-		else {
-			pumpableBlocks.setRange(64);
-		}
-	}
-
-	/**
-	 * エネルギー設定メソッド
-	 * @param type ポンプのType
-	 */
-	public void setProviderConfigure(int type) {
-		System.out.println("setProvider");
-		pumpableBlocks = new AdjacentLiquids(this, type);
->>>>>>> mc1.7.10
 		if(type == 0) {
 			setBattery(new RFBattery(10, 10, 0));
 		}
@@ -136,29 +74,6 @@ public class TilePumpEX extends TileBuildCraft{
 		}
 	}
 
-<<<<<<< HEAD
-=======
-	protected void pumpInitialize() {
-		for(int y = yCoord - 1; y > 0; y--) {
-			Block block = worldObj.getBlock(xCoord, y, zCoord);
-			if(isPumpableFluid(xCoord, y, zCoord)) {
-				Block underBlock = worldObj.getBlock(xCoord, y - 1, zCoord);
-				if(!isPumpableFluid(xCoord, y - 1, zCoord)) {
-					setAim(y, block);
-					return;
-				}
-				if(y == 1) {
-					setAim(0, underBlock);
-					return;
-				}
-			}
-		}
-	}
-
-	/**
-	 * チューブの位置設定メソッド
-	 */
->>>>>>> mc1.7.10
 	protected void setTubePosition() {
 		if(tube != null) {
 			tube.iSize = 0.5D;
@@ -168,12 +83,6 @@ public class TilePumpEX extends TileBuildCraft{
 		}
 	}
 
-<<<<<<< HEAD
-=======
-	/**
-	 * チューブの作成メソッド
-	 */
->>>>>>> mc1.7.10
 	protected void createTube() {
 		if(tube == null) {
 			tube = FactoryProxy.proxy.newPumpTube(worldObj);
@@ -196,12 +105,6 @@ public class TilePumpEX extends TileBuildCraft{
 		}
 	}
 
-<<<<<<< HEAD
-=======
-	/**
-	 * チューブの削除メソッド
-	 */
->>>>>>> mc1.7.10
 	protected void destroyTube() {
 		if(tube != null) {
 			CoreProxy.proxy.removeEntity(tube);
@@ -221,12 +124,6 @@ public class TilePumpEX extends TileBuildCraft{
 		}
 	}
 
-<<<<<<< HEAD
-=======
-	/**
-	 * 隣接しているタンクに水を移すメソッド
-	 */
->>>>>>> mc1.7.10
 	private void pushToConsumers() {
 		if(cache == null) {
 			cache = TileBuffer.makeBuffer(worldObj, xCoord, yCoord, zCoord, false);
@@ -234,20 +131,12 @@ public class TilePumpEX extends TileBuildCraft{
 		TankUtils.pushFluidToConsumers(tank, tank.getFluidAmount(), cache);
 	}
 
-<<<<<<< HEAD
-=======
-	/**
-	 * ポンプの実際の稼働メソッド
-	 * @param index ブロック情報
-	 */
->>>>>>> mc1.7.10
 	private void onAction(BlockIndex index) {
 		while(getBattery().useEnergy(minUseEnergy[type], minUseEnergy[type], false) > 0) {
 			if((isFluidAllowed(fluidStack.getFluid())) && (tank.fill(fluidStack, false) == fluidStack.amount)) {
 				if(type == 1) {
 
 				}
-<<<<<<< HEAD
 				else if((fluidStack.getFluid() != FluidRegistry.WATER) || (BuildCraftCore.consumeWaterSources) || (numFluidBlocksFound > 0)) {
 					index = getNextIndexToPump(true);
 					BlockUtils.drainBlock(worldObj, index.x, index.y, index.z, true);
@@ -255,17 +144,6 @@ public class TilePumpEX extends TileBuildCraft{
 				tank.fill(fluidStack, true);
 				pushToConsumers();
 				fluidStack = index != null ? BlockUtils.drainBlock(worldObj, index.x, index.y, index.z, false) : null;
-=======
-				else if((numFluidBlocksFound > 0)) {
-					index = getNextIndexToPump(true);
-					//BlockUtils.drainBlock(worldObj, nowIndex.x, nowIndex.y, nowIndex.z, true);
-					WorldHelper.setBlockToAir(worldObj, index.x, index.y, index.z);
-					worldObj.markBlockForUpdate(index.x, index.y, index.z);
-				}
-				tank.fill(fluidStack, true);
-				pushToConsumers();
-				fluidStack = (index != null ? BlockUtils.drainBlock(worldObj, index.x, index.y, index.z, false) : null);
->>>>>>> mc1.7.10
 				if(fluidStack == null) {
 					return;
 				}
@@ -289,7 +167,6 @@ public class TilePumpEX extends TileBuildCraft{
 		if(worldObj.isRemote) {
 			return;
 		}
-<<<<<<< HEAD
 		if(updateTracker.markTimeIfDelay(worldObj)) {
 			sendNetworkUpdate();
 		}
@@ -298,19 +175,12 @@ public class TilePumpEX extends TileBuildCraft{
 		}
 		if(tube.posY - aimY > 0.01D) {
 			tubeY = tube.posY - 0.01D;
-=======
-		if(tube.posY - aimY > tubeSpeed + 0.4D) {
-			tubeY = (tube.posY - tubeSpeed);
->>>>>>> mc1.7.10
 			setTubePosition();
 			sendNetworkUpdate();
 			return;
 		}
-<<<<<<< HEAD
 		tick += 1;
 
-=======
->>>>>>> mc1.7.10
 		BlockIndex index = getNextIndexToPump(false);
 
 		fluidStack = index != null ? BlockUtils.drainBlock(worldObj, index.x, index.y, index.z, false) : null;
@@ -395,12 +265,9 @@ public class TilePumpEX extends TileBuildCraft{
 				queueForPumping(index.x - 1, index.y, index.z, visitedBlocks, fluidsFound, pumpingFluid);
 				queueForPumping(index.x, index.y, index.z + 1, visitedBlocks, fluidsFound, pumpingFluid);
 				queueForPumping(index.x, index.y, index.z - 1, visitedBlocks, fluidsFound, pumpingFluid);
-<<<<<<< HEAD
 				if((pumpingFluid == FluidRegistry.WATER) && (numFluidBlocksFound >= 9)) {
 					return;
 				}
-=======
->>>>>>> mc1.7.10
 			}
 		}
 	}
@@ -517,7 +384,6 @@ public class TilePumpEX extends TileBuildCraft{
 		pumpLayerQueues.clear();
 		destroyTube();
 	}
-<<<<<<< HEAD
 
 	@Override
 	public boolean hasWork() {
@@ -527,6 +393,4 @@ public class TilePumpEX extends TileBuildCraft{
 		}
 		return false;
 	}
-=======
->>>>>>> mc1.7.10
 }

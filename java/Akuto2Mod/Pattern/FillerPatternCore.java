@@ -7,10 +7,6 @@ import java.util.TreeMap;
 
 import Akuto2Mod.Akuto2Core;
 import Akuto2Mod.TileEntity.TileFillerEX;
-<<<<<<< HEAD
-=======
-import Akuto2Mod.Utils.WorldHelper;
->>>>>>> mc1.7.10
 import buildcraft.api.core.BuildCraftAPI;
 import buildcraft.api.core.IBox;
 import buildcraft.core.proxy.CoreProxy;
@@ -18,10 +14,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
-<<<<<<< HEAD
 import net.minecraft.block.material.Material;
-=======
->>>>>>> mc1.7.10
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
@@ -184,11 +177,7 @@ public abstract class FillerPatternCore{
 	}
 
 	public boolean isLiquidBlock(Block block) {
-<<<<<<< HEAD
 		return block.getMaterial() == Material.water || block.getMaterial() == Material.lava;
-=======
-		return block.getMaterial().isLiquid();
->>>>>>> mc1.7.10
 	}
 
 	public boolean isFallBlock(Block block) {
@@ -199,13 +188,6 @@ public abstract class FillerPatternCore{
 		return block == Blocks.bedrock || block == Blocks.lava || block == Blocks.flowing_lava || block == Blocks.end_portal_frame || block == Blocks.end_portal;
 	}
 
-<<<<<<< HEAD
-=======
-	public boolean isAir(Block block) {
-		return block == Blocks.air;
-	}
-
->>>>>>> mc1.7.10
 	protected boolean isRange(int start, int end, int current, int vector) {
 		if(vector > 0) {
 			return current >= start && current <= end;
@@ -243,11 +225,7 @@ public abstract class FillerPatternCore{
 	}
 
 	protected void eraseBlock(World world, int x, int y, int z) {
-<<<<<<< HEAD
 		world.setBlockToAir(x, y, z);
-=======
-		WorldHelper.setBlockToAir(world, x, y, z);
->>>>>>> mc1.7.10
 		world.markBlockForUpdate(x, y, z);
 	}
 

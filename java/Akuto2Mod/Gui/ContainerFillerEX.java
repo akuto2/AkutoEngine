@@ -61,10 +61,7 @@ public class ContainerFillerEX extends Container{
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
 		FillerPatternCore pattern = FillerPatternRecipe.findMatchingRecipe(fillerEX);
-<<<<<<< HEAD
 		System.out.println(pattern);
-=======
->>>>>>> mc1.7.10
 		if(pattern != null && pattern instanceof FillerPatternCore) {
 			craftResult.setInventorySlotContents(0, ((FillerPatternCore)pattern).moduleItem.copy());
 		}
