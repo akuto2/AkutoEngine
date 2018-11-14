@@ -52,7 +52,6 @@ import Akuto2Mod.TileEntity.Engine.TileSuperEngine;
 import Akuto2Mod.TileEntity.Engine.TileSuperEngine2;
 import Akuto2Mod.Utils.AchievementHandler;
 import Akuto2Mod.Utils.ModInfo;
-import Akuto2Mod.Utils.Update;
 import buildcraft.BuildCraftBuilders;
 import buildcraft.BuildCraftCore;
 import buildcraft.BuildCraftFactory;
@@ -76,6 +75,8 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
+import lib.utils.Register;
+import lib.utils.UpdateChecker;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -86,7 +87,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
-@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.7", dependencies ="required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
+@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.7", dependencies ="required-after:AkutoLib;required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
 public class Akuto2Core {
 	@Instance("AkutoEngine")
 	public static Akuto2Core instance;
@@ -94,7 +95,7 @@ public class Akuto2Core {
 	public static ModMetadata meta;
 	@SidedProxy(clientSide = "Akuto2Mod.Client.ClientProxy", serverSide = "Akuto2Mod.CommonProxy")
 	public static CommonProxy proxy;
-	public static Update update = null;
+	public static UpdateChecker update = null;
 
 	public static final CreativeTabs tabAkutoEngine = new CreativeTabAkutoEngine("AkutoEngine");
 	boolean isFinalType;
@@ -139,6 +140,8 @@ public class Akuto2Core {
 	public static final List<String> TEXTURE_STRING_LIST = Arrays.asList(new String[]{"base_wood1", "base_wood2", "base_wood3", "base_wood4", "base_wood5", "base_wood6", "base_wood7", "base_wood8", "base_wood9"});
 	public static final List<ResourceLocation> RESOURCE_LOCATION_LIST = new ArrayList();
 
+	public Register register = new Register(tabAkutoEngine);
+
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event){
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -147,35 +150,35 @@ public class Akuto2Core {
 		intervalTorch = config.getInt("Filler", "intervalTorch", 6, 2, 64, "Torch Module Interval: 2 - 64");
 		config.save();
 		ModInfo.load(meta);
-		update = new Update();
+		update = new UpdateChecker("AkutoEngine", meta);
 		update.checkUpdate();
 		engineBlock = new BlockAutoEngine().setResistance(10.0f).setBlockName("AutoEngine:Akuto2Wood");
-		GameRegistry.registerBlock(engineBlock, ItemAutoEngine.class, "autoengine");
 		engineCore = (new engineCore()).setUnlocalizedName("engineCore").setTextureName("akutoengine:engineCore");
-		GameRegistry.registerItem(engineCore, "engineCore");
 		engineCore2 = (new engineCore()).setUnlocalizedName("engineCoreMk2").setTextureName("akutoengine:engineCoreMk2");
-		GameRegistry.registerItem(engineCore2, "engineCoreMk2");
 		coreElementary1 = (new engineCore()).setUnlocalizedName("coreElementary").setTextureName("akutoengine:coreElementary");
-		GameRegistry.registerItem(coreElementary1, "coreElemntary");
 		coreElementary2 = (new engineCore()).setUnlocalizedName("coreElementary2").setTextureName("akutoengine:coreElementary2");
-		GameRegistry.registerItem(coreElementary2, "coreElemntary2");
 		engineChip = (new engineCore()).setUnlocalizedName("engineChip").setTextureName("akutoengine:engineChip");
-		GameRegistry.registerItem(engineChip, "engineChip");
 		heatPearl = (new engineCore()).setUnlocalizedName("heatPearl").setTextureName("akutoengine:heatPearl");
-		GameRegistry.registerItem(heatPearl, "heatPearl");
 		TankEX = (new BlockTankEX()).setCreativeTab(tabAkutoEngine);
-		GameRegistry.registerBlock(TankEX, ItemBlockTankEX.class, "TankEX");
 		pumpEX = (new BlockPumpEX()).setCreativeTab(tabAkutoEngine);
-		GameRegistry.registerBlock(pumpEX, ItemPumpEX.class, "pumpEX");
-		BuilderAPI.schematicRegistry.registerSchematicBlock(pumpEX, SchematicPump.class, new Object[0]);
 //		autoWorkBench = (new BlockAutoWorkBench());
 //		GameRegistry.registerBlock(autoWorkBench, "autoWorkBench");
 //		emcBuilder = new BlockEMCBuilder();
 //		GameRegistry.registerBlock(emcBuilder, "emcBuilder");
 		fillerEX = (new BlockFilllerEX());
-		GameRegistry.registerBlock(fillerEX, "fillerEX");
 		fillerModule = new ItemFillerPattern();
-		GameRegistry.registerItem(fillerModule, "fillerModule");
+		register.register(engineBlock, ItemAutoEngine.class, "autoengine");
+		register.register(engineCore, "engineCore");
+		register.register(engineCore2, "engineCoreMk2");
+		register.register(coreElementary1, "coreElemntary");
+		register.register(coreElementary2, "coreElemntary2");
+		register.register(engineChip, "engineChip");
+		register.register(heatPearl, "heatPearl");
+		register.register(TankEX, ItemBlockTankEX.class, "TankEX");
+		register.register(pumpEX, ItemPumpEX.class, "pumpEX");
+		BuilderAPI.schematicRegistry.registerSchematicBlock(pumpEX, SchematicPump.class, new Object[0]);
+		register.register(fillerEX, "fillerEX");
+		register.register(fillerModule, "fillerModule");
 		registerFiller(new FillerFillAll(), "bbb", "bbb", "bbb", 0);
 		registerFiller(new FillerEraser(), "ggg", "g g", "ggg", 1);
 		registerFiller(new FillerRemover(), "ggg", "ggg", "ggg", 2);

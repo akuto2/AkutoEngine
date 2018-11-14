@@ -13,7 +13,6 @@ public class BlockAutoWorkBench extends BlockContainer {
 
 	public BlockAutoWorkBench() {
 		super(Material.wood);
-		setCreativeTab(Akuto2Core.tabAkutoEngine);
 		setHardness(3.0F);
 	}
 

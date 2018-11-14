@@ -15,12 +15,18 @@ public class FillerHoe extends FillerPatternCore{
 		return fillerHoe(fillerEX);
 	}
 
+	@Override
+	public void initialize(TileFillerEX fillerEX) {
+		super.initialize(fillerEX);
+		fillerEX.cy = fillerEX.sy - 1;
+	}
+
 	protected boolean fillerHoe(TileFillerEX fillerEX) {
-		int y = fillerEX.sy - 1;
 		while(fillerEX.cz >= fillerEX.sz && fillerEX.cz <= fillerEX.ez) {
-			while(fillerEX.cx >= fillerEX.sx && fillerEX.ex <= fillerEX.ex) {
-				if(isDirt(fillerEX.getWorldObj().getBlock(fillerEX.cx, y, fillerEX.cz))){
-					fillerEX.getWorldObj().setBlock(fillerEX.cx, y, fillerEX.cz, Blocks.farmland);
+			while(fillerEX.cx >= fillerEX.sx && fillerEX.cx <= fillerEX.ex) {
+				if(isDirt(fillerEX.getWorldObj().getBlock(fillerEX.cx, fillerEX.cy, fillerEX.cz))){
+					fillerEX.getWorldObj().setBlock(fillerEX.cx, fillerEX.cy, fillerEX.cz, Blocks.farmland);
+					fillerEX.cx++;
 					return false;
 				}
 				fillerEX.cx++;

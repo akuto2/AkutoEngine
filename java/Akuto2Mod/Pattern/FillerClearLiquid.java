@@ -11,7 +11,7 @@ public class FillerClearLiquid extends FillerPatternCore{
 
 	@Override
 	public boolean iteratePattern(TileFillerEX fillerEX, ItemStack stack) {
-		return fillLiquid(fillerEX, stack);
+		return clearLiquid(fillerEX);
 	}
 
 	@Override
@@ -20,10 +20,7 @@ public class FillerClearLiquid extends FillerPatternCore{
 		fillerEX.setPower(16, 256);
 	}
 
-	public boolean fillLiquid(TileFillerEX fillerEX, ItemStack stack) {
-		if(stack == null) {
-			return false;
-		}
+	public boolean clearLiquid(TileFillerEX fillerEX) {
 		while(fillerEX.cy >= fillerEX.sy && fillerEX.cy <= fillerEX.ey && fillerEX.cy <= 255 && fillerEX.cy > 0) {
 			while(fillerEX.cz >= fillerEX.sz && fillerEX.cz <= fillerEX.ez) {
 				while(fillerEX.cx >= fillerEX.sx && fillerEX.cx <= fillerEX.ex) {
