@@ -2,11 +2,19 @@ package Akuto2Mod.Items;
 
 import java.util.List;
 
+<<<<<<< HEAD
+=======
+import Akuto2Mod.Utils.AchievementHandler;
+>>>>>>> mc1.7.10
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+<<<<<<< HEAD
+=======
+import net.minecraft.world.World;
+>>>>>>> mc1.7.10
 import net.minecraftforge.fluids.FluidStack;
 
 public class ItemBlockTankEX extends ItemBlock{
@@ -16,6 +24,15 @@ public class ItemBlockTankEX extends ItemBlock{
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+		player.triggerAchievement(AchievementHandler.getTank);
+		super.onCreated(stack, world, player);
+	}
+
+	@Override
+>>>>>>> mc1.7.10
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		super.addInformation(stack, player, list, par4);
 		if(stack.hasTagCompound()){

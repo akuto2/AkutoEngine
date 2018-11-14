@@ -38,6 +38,12 @@ fillerPattern.8.name=壁作成モジュール
 fillerPattern.9.name=床張り替えモジュール
 fillerPattern.10.name=松明設置モジュール
 fillerPattern.11.name=タワーモジュール
+<<<<<<< HEAD
+=======
+fillerPattern.12.name=液体除去モジュール
+fillerPattern.13.name=クワモジュール
+fillerPattern.14.name=露天採掘モジュール
+>>>>>>> mc1.7.10
 tile.tankEX.name=タンク改
 tile.fillerEX.name=フィラー改
 

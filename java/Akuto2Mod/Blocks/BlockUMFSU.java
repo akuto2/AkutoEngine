@@ -1,14 +1,26 @@
 package Akuto2Mod.Blocks;
 
+<<<<<<< HEAD
+=======
+import java.util.List;
+
+import Akuto2Mod.Akuto2Core;
+import Akuto2Mod.TileEntity.TileEntityUmfsu;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+>>>>>>> mc1.7.10
 import ic2.api.tile.IWrenchable;
 import ic2.core.Ic2Items;
 import ic2.core.block.TileEntityBlock;
 import ic2.core.block.wiring.TileEntityElectricBlock;
 import ic2.core.util.StackUtil;
 import ic2.core.util.Util;
+<<<<<<< HEAD
 
 import java.util.List;
 
+=======
+>>>>>>> mc1.7.10
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
@@ -27,10 +39,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+<<<<<<< HEAD
 import Akuto2Mod.Akuto2Core;
 import Akuto2Mod.TileEntity.TileEntityUmfsu;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+=======
+>>>>>>> mc1.7.10
 
 public class BlockUMFSU extends Block {
 	@SideOnly(Side.CLIENT)
@@ -42,7 +57,10 @@ public class BlockUMFSU extends Block {
 
 	public BlockUMFSU(){
 		super(Material.iron);
+<<<<<<< HEAD
 		setCreativeTab(Akuto2Core.tabAkutoEngine);
+=======
+>>>>>>> mc1.7.10
 		setHardness(1.5F);
 		setStepSound(soundTypeMetal);
 		setBlockName("UMFSU");

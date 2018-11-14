@@ -1,9 +1,19 @@
 package Akuto2Mod.Items;
 
+<<<<<<< HEAD
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+=======
+import Akuto2Mod.Utils.AchievementHandler;
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
+>>>>>>> mc1.7.10
 
 public class ItemPumpEX extends ItemBlock{
 	public ItemPumpEX(Block block) {
@@ -13,6 +23,17 @@ public class ItemPumpEX extends ItemBlock{
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+		if(stack.getItemDamage() == 0) {
+			player.triggerAchievement(AchievementHandler.getPump);
+		}
+		super.onCreated(stack, world, player);
+	}
+
+	@Override
+>>>>>>> mc1.7.10
 	public String getUnlocalizedName(ItemStack stack) {
 		int meta = stack.getItemDamage() + 1;
 		return (meta > 6) ? null : "tile.pumpEX_" + meta;

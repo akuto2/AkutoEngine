@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+<<<<<<< HEAD
 import Akuto2Mod.Blocks.BlcokHEMFSU;
 import Akuto2Mod.Blocks.BlockAutoEngine;
 import Akuto2Mod.Blocks.BlockFilllerEX;
@@ -12,11 +13,19 @@ import Akuto2Mod.Blocks.BlockHUMFSU;
 import Akuto2Mod.Blocks.BlockPumpEX;
 import Akuto2Mod.Blocks.BlockTankEX;
 import Akuto2Mod.Blocks.BlockUMFSU;
+=======
+import Akuto2Mod.Blocks.BlockAutoEngine;
+import Akuto2Mod.Blocks.BlockFilllerEX;
+import Akuto2Mod.Blocks.BlockPumpEX;
+import Akuto2Mod.Blocks.BlockTankEX;
+import Akuto2Mod.Compat.Compat;
+>>>>>>> mc1.7.10
 import Akuto2Mod.CreativeTab.CreativeTabAkutoEngine;
 import Akuto2Mod.Event.CommonEventHandler;
 import Akuto2Mod.Event.ToolTipEvent;
 import Akuto2Mod.Gui.GuiHandler;
 import Akuto2Mod.Items.ItemAutoEngine;
+<<<<<<< HEAD
 import Akuto2Mod.Items.ItemBlockHemfsu;
 import Akuto2Mod.Items.ItemBlockHumfsu;
 import Akuto2Mod.Items.ItemBlockTankEX;
@@ -25,23 +34,43 @@ import Akuto2Mod.Items.ItemFillerPattern;
 import Akuto2Mod.Items.ItemKleinStarsEX;
 import Akuto2Mod.Items.ItemPumpEX;
 import Akuto2Mod.Items.engineCore;
+=======
+import Akuto2Mod.Items.ItemBlockTankEX;
+import Akuto2Mod.Items.ItemFillerPattern;
+import Akuto2Mod.Items.ItemPumpEX;
+import Akuto2Mod.Items.engineCore;
+import Akuto2Mod.Pattern.FillerClearLiquid;
+>>>>>>> mc1.7.10
 import Akuto2Mod.Pattern.FillerEraser;
 import Akuto2Mod.Pattern.FillerFillAll;
 import Akuto2Mod.Pattern.FillerFillBox;
 import Akuto2Mod.Pattern.FillerFillWall;
 import Akuto2Mod.Pattern.FillerFlattener;
 import Akuto2Mod.Pattern.FillerFlooring;
+<<<<<<< HEAD
 import Akuto2Mod.Pattern.FillerHoleFill;
 import Akuto2Mod.Pattern.FillerPatternCore;
 import Akuto2Mod.Pattern.FillerPatternRecipe;
+=======
+import Akuto2Mod.Pattern.FillerHoe;
+import Akuto2Mod.Pattern.FillerHoleFill;
+import Akuto2Mod.Pattern.FillerPatternCore;
+import Akuto2Mod.Pattern.FillerPatternRecipe;
+import Akuto2Mod.Pattern.FillerQuarry;
+>>>>>>> mc1.7.10
 import Akuto2Mod.Pattern.FillerRemover;
 import Akuto2Mod.Pattern.FillerRemover2;
 import Akuto2Mod.Pattern.FillerTorch;
 import Akuto2Mod.Pattern.FillerTower;
 import Akuto2Mod.Pattern.FillerUnderFill;
+<<<<<<< HEAD
 import Akuto2Mod.TileEntity.TileEntityHemfsu;
 import Akuto2Mod.TileEntity.TileEntityHumfsu;
 import Akuto2Mod.TileEntity.TileEntityUmfsu;
+=======
+import Akuto2Mod.TileEntity.TileAutoWorkBench;
+import Akuto2Mod.TileEntity.TileEMCBuilder;
+>>>>>>> mc1.7.10
 import Akuto2Mod.TileEntity.TileFillerEX;
 import Akuto2Mod.TileEntity.TilePumpEX;
 import Akuto2Mod.TileEntity.TileTankEX;
@@ -54,8 +83,13 @@ import Akuto2Mod.TileEntity.Engine.TileAutoEngine8;
 import Akuto2Mod.TileEntity.Engine.TileFinalEngine;
 import Akuto2Mod.TileEntity.Engine.TileSuperEngine;
 import Akuto2Mod.TileEntity.Engine.TileSuperEngine2;
+<<<<<<< HEAD
 import Akuto2Mod.Utils.ModInfo;
 import Akuto2Mod.Utils.Update;
+=======
+import Akuto2Mod.Utils.AchievementHandler;
+import Akuto2Mod.Utils.ModInfo;
+>>>>>>> mc1.7.10
 import buildcraft.BuildCraftBuilders;
 import buildcraft.BuildCraftCore;
 import buildcraft.BuildCraftFactory;
@@ -66,9 +100,13 @@ import buildcraft.api.recipes.BuildcraftRecipeRegistry;
 import buildcraft.factory.schematics.SchematicPump;
 import buildcraft.transport.gates.GateDefinition;
 import buildcraft.transport.gates.ItemGate;
+<<<<<<< HEAD
 import compactengine.CompactEngine;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
+=======
+import cpw.mods.fml.common.FMLCommonHandler;
+>>>>>>> mc1.7.10
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.Metadata;
@@ -81,24 +119,37 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
+<<<<<<< HEAD
 import ic2.core.Ic2Items;
 import infinitychest.InfinityChest;
 import infinitychest.InfinityChestBlock;
 import moze_intel.projecte.gameObjs.ObjHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+=======
+import lib.utils.Register;
+import lib.utils.UpdateChecker;
+import net.minecraft.block.Block;
+>>>>>>> mc1.7.10
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+<<<<<<< HEAD
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
+=======
+>>>>>>> mc1.7.10
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
+<<<<<<< HEAD
 @Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.4", dependencies ="required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
+=======
+@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.7", dependencies ="required-after:AkutoLib;required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
+>>>>>>> mc1.7.10
 public class Akuto2Core {
 	@Instance("AkutoEngine")
 	public static Akuto2Core instance;
@@ -106,7 +157,11 @@ public class Akuto2Core {
 	public static ModMetadata meta;
 	@SidedProxy(clientSide = "Akuto2Mod.Client.ClientProxy", serverSide = "Akuto2Mod.CommonProxy")
 	public static CommonProxy proxy;
+<<<<<<< HEAD
 	public static Update update = null;
+=======
+	public static UpdateChecker update = null;
+>>>>>>> mc1.7.10
 
 	public static final CreativeTabs tabAkutoEngine = new CreativeTabAkutoEngine("AkutoEngine");
 	boolean isFinalType;
@@ -120,6 +175,12 @@ public class Akuto2Core {
 	public static Block fillerEX;
 	public static Block TankEX;
 	public static Block pumpEX;
+<<<<<<< HEAD
+=======
+	public static Block emcContainer;
+//	public static Block autoWorkBench;
+//	public static Block emcBuilder;
+>>>>>>> mc1.7.10
 	public static Item engineItem;
 	public static Item engineChip;
 	public static Item heatPearl;
@@ -148,6 +209,11 @@ public class Akuto2Core {
 	public static final List<String> TEXTURE_STRING_LIST = Arrays.asList(new String[]{"base_wood1", "base_wood2", "base_wood3", "base_wood4", "base_wood5", "base_wood6", "base_wood7", "base_wood8", "base_wood9"});
 	public static final List<ResourceLocation> RESOURCE_LOCATION_LIST = new ArrayList();
 
+<<<<<<< HEAD
+=======
+	public Register register = new Register(tabAkutoEngine);
+
+>>>>>>> mc1.7.10
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event){
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -156,6 +222,7 @@ public class Akuto2Core {
 		intervalTorch = config.getInt("Filler", "intervalTorch", 6, 2, 64, "Torch Module Interval: 2 - 64");
 		config.save();
 		ModInfo.load(meta);
+<<<<<<< HEAD
 		update = new Update();
 		update.checkUpdate();
 		engineBlock = new BlockAutoEngine().setResistance(10.0f).setBlockName("AutoEngine:Akuto2Wood");
@@ -181,6 +248,37 @@ public class Akuto2Core {
 		GameRegistry.registerBlock(fillerEX, "fillerEX");
 		fillerModule = new ItemFillerPattern();
 		GameRegistry.registerItem(fillerModule, "fillerModule");
+=======
+		update = new UpdateChecker("AkutoEngine", meta);
+		update.checkUpdate();
+		engineBlock = new BlockAutoEngine().setResistance(10.0f).setBlockName("AutoEngine:Akuto2Wood");
+		engineCore = (new engineCore()).setUnlocalizedName("engineCore").setTextureName("akutoengine:engineCore");
+		engineCore2 = (new engineCore()).setUnlocalizedName("engineCoreMk2").setTextureName("akutoengine:engineCoreMk2");
+		coreElementary1 = (new engineCore()).setUnlocalizedName("coreElementary").setTextureName("akutoengine:coreElementary");
+		coreElementary2 = (new engineCore()).setUnlocalizedName("coreElementary2").setTextureName("akutoengine:coreElementary2");
+		engineChip = (new engineCore()).setUnlocalizedName("engineChip").setTextureName("akutoengine:engineChip");
+		heatPearl = (new engineCore()).setUnlocalizedName("heatPearl").setTextureName("akutoengine:heatPearl");
+		TankEX = (new BlockTankEX()).setCreativeTab(tabAkutoEngine);
+		pumpEX = (new BlockPumpEX()).setCreativeTab(tabAkutoEngine);
+//		autoWorkBench = (new BlockAutoWorkBench());
+//		GameRegistry.registerBlock(autoWorkBench, "autoWorkBench");
+//		emcBuilder = new BlockEMCBuilder();
+//		GameRegistry.registerBlock(emcBuilder, "emcBuilder");
+		fillerEX = (new BlockFilllerEX());
+		fillerModule = new ItemFillerPattern();
+		register.register(engineBlock, ItemAutoEngine.class, "autoengine");
+		register.register(engineCore, "engineCore");
+		register.register(engineCore2, "engineCoreMk2");
+		register.register(coreElementary1, "coreElemntary");
+		register.register(coreElementary2, "coreElemntary2");
+		register.register(engineChip, "engineChip");
+		register.register(heatPearl, "heatPearl");
+		register.register(TankEX, ItemBlockTankEX.class, "TankEX");
+		register.register(pumpEX, ItemPumpEX.class, "pumpEX");
+		BuilderAPI.schematicRegistry.registerSchematicBlock(pumpEX, SchematicPump.class, new Object[0]);
+		register.register(fillerEX, "fillerEX");
+		register.register(fillerModule, "fillerModule");
+>>>>>>> mc1.7.10
 		registerFiller(new FillerFillAll(), "bbb", "bbb", "bbb", 0);
 		registerFiller(new FillerEraser(), "ggg", "g g", "ggg", 1);
 		registerFiller(new FillerRemover(), "ggg", "ggg", "ggg", 2);
@@ -193,6 +291,7 @@ public class Akuto2Core {
 		registerFiller(new FillerFlooring(), "   ", "bbb", "ggg", 9);
 		registerFiller(new FillerTorch(), "b b", " b ", "b b", 10);
 		registerFiller(new FillerTower(), " bb", " bb", " bb", 11);
+<<<<<<< HEAD
 		GameRegistry.registerTileEntity(TileFillerEX.class, "tile.fillerEX");
 		if(Loader.isModLoaded("IC2")){
 			preIC2();
@@ -204,6 +303,16 @@ public class Akuto2Core {
 			infinityChest = new InfinityChestBlock().setBlockName("ExplosionProInfinityChest").setResistance(100.0F).setCreativeTab(tabAkutoEngine);
 			GameRegistry.registerBlock(infinityChest, "ExplosionProInfinityChest");
 		}
+=======
+		registerFiller(new FillerClearLiquid(), "   ", "ggg", "www", 12);
+		registerFiller(new FillerHoe(), "bb ", " b ", " b ", 13);
+		registerFiller(new FillerQuarry(), "g g", "g g", "bbb", 14);
+		GameRegistry.registerTileEntity(TileFillerEX.class, "tile.fillerEX");
+		AchievementHandler.addAchivement();
+
+		Compat.census();
+		Compat.pre();
+>>>>>>> mc1.7.10
 	}
 
 	@Mod.EventHandler
@@ -237,6 +346,12 @@ public class Akuto2Core {
 		GameRegistry.registerTileEntity(TileFinalEngine.class, "tile.finalengine");
 		GameRegistry.registerTileEntity(TileTankEX.class, "tile.tankEX");
 		GameRegistry.registerTileEntity(TilePumpEX.class, "tile.pumpEX");
+<<<<<<< HEAD
+=======
+		GameRegistry.registerTileEntity(TileAutoWorkBench.class, "tile.autoBench");
+		GameRegistry.registerTileEntity(TileEMCBuilder.class, "tile.emcBuilder");
+
+>>>>>>> mc1.7.10
 
 		ItemStack woodEngine = new ItemStack(BuildCraftCore.engineBlock, 1, 0);
 		ItemStack ironEngine = new ItemStack(BuildCraftCore.engineBlock, 1, 2);
@@ -281,6 +396,7 @@ public class Akuto2Core {
 			pumpEX4 = new ItemStack(pumpEX, 1, 4);
 			GameRegistry.addRecipe(pumpEX4, "tct", "dpd", "bcb", 't', TankEX, 'c', engineCore2, 'd', diaANDGate, 'p', pumpEX3, 'b', Blocks.bedrock);
 		}
+<<<<<<< HEAD
 		if (Loader.isModLoaded("IC2")){
 			initIC2();
 	    }
@@ -293,6 +409,10 @@ public class Akuto2Core {
 	    if(Loader.isModLoaded("InfinityChest")){
 	    	GameRegistry.addRecipe(new ItemStack(infinityChest), "aaa", "aca", "aaa", 'a', Blocks.bedrock, 'c', InfinityChest.infinityChest);
 	    }
+=======
+
+		Compat.init();
+>>>>>>> mc1.7.10
 	}
 
 	@Mod.EventHandler
@@ -308,7 +428,11 @@ public class Akuto2Core {
 	}
 
 	public void registerFiller(FillerPatternCore pattern, String s1, String s2, String s3, int meta) {
+<<<<<<< HEAD
 		FillerPatternRecipe.addRecipe(pattern, s1,s2,s3, 'b', Blocks.brick_block, 'g', Blocks.glass);
+=======
+		FillerPatternRecipe.addRecipe(pattern, s1,s2,s3, 'b', Blocks.brick_block, 'g', Blocks.glass, 'w', Items.water_bucket);
+>>>>>>> mc1.7.10
 		registerFiller(pattern, meta);
 	}
 
@@ -318,6 +442,7 @@ public class Akuto2Core {
 		fillerModule.maxItem = meta + 1;
 	}
 
+<<<<<<< HEAD
 	public void preIC2() {
 		umfsUint = new BlockUMFSU();
 		GameRegistry.registerBlock(umfsUint, ItemBlockUmfsu.class, "umfsUinit");
@@ -390,6 +515,13 @@ public class Akuto2Core {
 		while(arg.hasNext()){
 			String str = (String)arg.next();
 			RESOURCE_LOCATION_LIST.add(new ResourceLocation("AkutoEngine".toLowerCase(), String.format("textures/blocks/%s.png", new Object[]{str})));
+=======
+	static {
+		Iterator arg = TEXTURE_STRING_LIST.iterator();
+		while(arg.hasNext()) {
+			String str = (String)arg.next();
+			RESOURCE_LOCATION_LIST.add(new ResourceLocation("AkutoEngine".toLowerCase(), String.format("textures/blocks/%s.png", new Object[] {str})));
+>>>>>>> mc1.7.10
 		}
 	}
 }

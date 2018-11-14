@@ -1,6 +1,11 @@
 package Akuto2Mod.Pattern;
 
 import Akuto2Mod.TileEntity.TileFillerEX;
+<<<<<<< HEAD
+=======
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+>>>>>>> mc1.7.10
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
@@ -47,6 +52,11 @@ public class FillerTower extends FillerPatternCore{
 	}
 
 	private boolean isBlock(TileFillerEX fillerEX) {
+<<<<<<< HEAD
 		return fillerEX.getWorldObj().getBlock(fillerEX.cx, fillerEX.sy, fillerEX.cz) != Blocks.air;
+=======
+		Block checkBlock = fillerEX.getWorldObj().getBlock(fillerEX.cx, fillerEX.sy, fillerEX.cz);
+		return checkBlock != Blocks.air && checkBlock.getMaterial() != Material.vine && checkBlock != Blocks.double_plant;
+>>>>>>> mc1.7.10
 	}
 }

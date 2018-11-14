@@ -31,7 +31,10 @@ public class BlockFilllerEX extends BlockContainer {
 
 	public BlockFilllerEX() {
 		super(Material.iron);
+<<<<<<< HEAD
 		setCreativeTab(Akuto2Core.tabAkutoEngine);
+=======
+>>>>>>> mc1.7.10
 		setBlockName("fillerEX");
 		setHardness(1.5F);
 	}

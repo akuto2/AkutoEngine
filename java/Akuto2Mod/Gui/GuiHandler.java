@@ -1,5 +1,10 @@
 package Akuto2Mod.Gui;
 
+<<<<<<< HEAD
+=======
+import Akuto2Mod.TileEntity.TileAutoWorkBench;
+import Akuto2Mod.TileEntity.TileEMCBuilder;
+>>>>>>> mc1.7.10
 import Akuto2Mod.TileEntity.TileFillerEX;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -22,6 +27,17 @@ public class GuiHandler implements IGuiHandler{
 			if(tileEntity instanceof TileFillerEX) {
 				return new ContainerFillerEX(player.inventory, (TileFillerEX) tileEntity);
 			}
+<<<<<<< HEAD
+=======
+		case 2:
+			if(tileEntity instanceof TileAutoWorkBench) {
+				return new ContainerAutoWorkBench(player.inventory, (TileAutoWorkBench)tileEntity);
+			}
+		case 3:
+			if(tileEntity instanceof TileEMCBuilder) {
+				return new ContainerTileEMCBuilder(player.inventory, (TileEMCBuilder)tileEntity);
+			}
+>>>>>>> mc1.7.10
 		}
 		return null;
 	}
@@ -39,6 +55,13 @@ public class GuiHandler implements IGuiHandler{
 			if(tileentity instanceof TileFillerEX) {
 				return new GuiFillerEX(player.inventory, (TileFillerEX) tileentity);
 			}
+<<<<<<< HEAD
+=======
+		case 3:
+			if(tileentity instanceof TileEMCBuilder) {
+				return new GuiTileEMCBuilder(player.inventory, (TileEMCBuilder) tileentity);
+			}
+>>>>>>> mc1.7.10
 		}
 		return null;
 	}
