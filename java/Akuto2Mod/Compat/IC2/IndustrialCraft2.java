@@ -18,11 +18,11 @@ import net.minecraft.item.ItemStack;
 public class IndustrialCraft2 {
 	public static void preIC2() {
 		umfsUint = new BlockUMFSU();
-		GameRegistry.registerBlock(umfsUint, ItemBlockUmfsu.class, "umfsUinit");
+		register.register(umfsUint, ItemBlockUmfsu.class, "umfsUinit");
 		humfsUint = new BlockHUMFSU();
-		GameRegistry.registerBlock(humfsUint, ItemBlockHumfsu.class, "humfsUinit");
+		register.register(humfsUint, ItemBlockHumfsu.class, "humfsUinit");
 		hemfsUint = new BlcokHEMFSU();
-		GameRegistry.registerBlock(hemfsUint, ItemBlockHemfsu.class, "hemfsUinit");
+		register.register(hemfsUint, ItemBlockHemfsu.class, "hemfsUinit");
 		GameRegistry.registerTileEntity(TileEntityUmfsu.class, "tile.umfsu");
 		GameRegistry.registerTileEntity(TileEntityHumfsu.class, "tile.humfsu");
 		GameRegistry.registerTileEntity(TileEntityHemfsu.class, "tile.hemfsu");

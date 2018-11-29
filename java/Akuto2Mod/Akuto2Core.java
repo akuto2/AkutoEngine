@@ -87,7 +87,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
-@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.7", dependencies ="required-after:AkutoLib;required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
+@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.9", dependencies ="required-after:AkutoLib;required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
 public class Akuto2Core {
 	@Instance("AkutoEngine")
 	public static Akuto2Core instance;
@@ -140,7 +140,7 @@ public class Akuto2Core {
 	public static final List<String> TEXTURE_STRING_LIST = Arrays.asList(new String[]{"base_wood1", "base_wood2", "base_wood3", "base_wood4", "base_wood5", "base_wood6", "base_wood7", "base_wood8", "base_wood9"});
 	public static final List<ResourceLocation> RESOURCE_LOCATION_LIST = new ArrayList();
 
-	public Register register = new Register(tabAkutoEngine);
+	public static Register register = new Register(tabAkutoEngine);
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event){
