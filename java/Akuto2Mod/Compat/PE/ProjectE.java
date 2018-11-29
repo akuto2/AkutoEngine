@@ -3,8 +3,6 @@ package Akuto2Mod.Compat.PE;
 import static Akuto2Mod.Akuto2Core.*;
 
 import Akuto2Mod.EMCHandler;
-import Akuto2Mod.Blocks.EmcContainer;
-import Akuto2Mod.Items.ItemBlockEMCContainer;
 import Akuto2Mod.Items.ItemKleinStarsEX;
 import Akuto2Mod.TileEntity.TileEmcContainer;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -17,8 +15,8 @@ public class ProjectE {
 		GameRegistry.registerItem(kleinStars1, "kleinStarsEx1");
 		kleinStars2 = new ItemKleinStarsEX(2048000000).setTextureName("akutoengine:kleinstars2").setUnlocalizedName("kleinStarsEX2");
 		GameRegistry.registerItem(kleinStars2, "kleinStarsEx2");
-		emcContainer = new EmcContainer().setCreativeTab(tabAkutoEngine);
-		GameRegistry.registerBlock(emcContainer, ItemBlockEMCContainer.class, "emcContainer");
+//		emcContainer = new EmcContainer().setCreativeTab(tabAkutoEngine);
+//		GameRegistry.registerBlock(emcContainer, ItemBlockEMCContainer.class, "emcContainer");
 	}
 
 	public static void initPE() {
