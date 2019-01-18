@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+
+<book>
+<page type="intro">
+<text>フィラーに追加されるモジュール
+
+・埋め立てモジュール
+・完全消去モジュール
+・撤去モジュール(下から上)
+・撤去モジュール(上から下)
+・整地モジュール
+・穴埋めモジュール
+・地下埋めモジュール
+・箱作成モジュール
+・壁作成モジュール
+・床張り替えモジュール
+・松明設置モジュール
+・タワーモジュール
+・液体除去モジュール
+・クワモジュール
+・露天採掘モジュール
+</text>
+</page>
+<page type="intro">
+<text>
+</text>
+</page>
+<page type="sectionpage">
+<title>埋め立てモジュール</title>
+<text>
+範囲内をすべて埋め立てるモジュール
+
+埋め立てる場所にMobがいた場合、Mobを殺してから埋め立てる
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>fillall</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>完全消去モジュール</title>
+<text>
+範囲内のブロックを消去するモジュール
+
+エンドポータルとフィラー改は消去しない
+
+ブロックが消去されても周りのブロックは更新しない
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>erase</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>撤去モジュール(下から上)</title>
+<text>
+範囲内のブロックを下から上に撤去するモジュール
+
+完全消去モジュールと違い、アイテムがドロップする
+
+最下段は2段ずつ撤去する
+
+落下するブロックがある場合、上に続いてるものをすべて撤去してから次に進む
+
+インベントリ内に砂があり、上に液体があったら液体を埋め立ててから撤去する
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>removeUp</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>撤去モジュール(上から下)</title>
+<text>
+範囲内のブロックを上から下に撤去するモジュール
+
+完全消去モジュールと違い、アイテムがドロップするが1秒で消滅する
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>removeDown</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>整地モジュール</title>
+<text>
+2つの動作をするモジュール
+
+1.指定範囲の一番下から上を消去する
+
+2.指定範囲より下に穴がある場合埋め立てる
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>flattener</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>穴埋めモジュール</title>
+<text>
+指定範囲より下に穴があったら埋め立てるモジュール
+
+y座標の指定は不要
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>holefill</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>地下埋めモジュール</title>
+<text>
+y=1から指定範囲の1段下までの空洞をすべて埋め立てる
+
+y座標の指定は不要
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>underfill</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>箱作成モジュール</title>
+<text>
+指定範囲に沿って東西南北上下に壁を作り、箱を作るモジュール
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>fillbox</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>壁作成モジュール</title>
+<text>
+指定範囲に沿って東西南北に壁を作るモジュール
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>fillwall</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>床張り替えモジュール</title>
+<text>
+指定範囲の1段下のブロックを指定ブロックに置き換えるモジュール
+
+その際もともとあったブロックは消去される
+
+y座標の指定は不要
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>flooring</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>松明設置モジュール</title>
+<text>
+指定範囲内でブロックを等間隔に設置するモジュール
+
+ブロックを置く間隔はコンフィグで設定できる
+
+初期値は6
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>filltorch</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>タワーモジュール</title>
+<text>
+指定範囲の1番下のブロックを基にして上へ積み上げていくモジュール
+
+基のブロックと積み上げるブロックは別のものでも動く
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>tower</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>液体除去モジュール</title>
+<text>
+範囲内の液体を消去するモジュール
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>clearliquid</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>クワモジュール</title>
+<text>
+指定範囲の一段下に土があった場合そこを耕すモジュール
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>fillhoe</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>露天採掘モジュール</title>
+<text>
+指定範囲の1段下からy=1までのブロックを消去するモジュール
+
+y=0にブロックがない場合は岩盤で埋め立てる
+</text>
+</page>
+<page type="crafting">
+<text>フィラー改</text>
+<recipe>
+    <name>quarry</name>
+    <size>three</size>
+</recipe>
+</page>
+</book>

@@ -26,6 +26,7 @@ tile.HEMFSU.name=HEMFSU
 item.pe_kleinStarsEX1.name=クラインの星 Neptune
 item.pe_kleinStarsEX2.name=クラインの星 Jupiter
 item.tooltip.Capacity=Capacity
+akutoengine:item.manual.filler.name=フィラー改説明書
 fillerPattern.0.name=埋め立てモジュール
 fillerPattern.1.name=完全消去モジュール
 fillerPattern.2.name=撤去モジュール(下から上)

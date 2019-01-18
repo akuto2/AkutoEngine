@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+
+<book>
+<page type="intro">
+<text>All Modules for "FillerEX"
+
+- Filling Module
+- Erasing Module
+- Removing(Bottom to Top) Module
+- Removing(Top to Bottom) Module
+- Flattening Module
+- Hole Filling Module
+- Under Filling Module
+- Box Module
+- Wall Module
+- Flooring Module
+- Placing Torch Module
+- Towering Module
+- Erasing Liquid Module
+- Hoe Module
+- Quarry Module
+</text>
+</page>
+<page type="intro">
+<text>
+</text>
+</page>
+<page type="sectionpage">
+<title>Filling Module</title>
+<text>
+Filling the area you wanted to
+with specified block which you put into "Filling Resources" inventory.
+If any Mob was in the area kill the Mob(s) first then start filling.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>fillall</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Erasing Module</title>
+<text>
+Erase all blocks in the area you limited without block updating.
+"End Portal" and "FillerEX" are NOT erase automatically.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>erase</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Remover(Bottom to Top) Module</title>
+<text>
+Remove all blocks in the area you limited with blocks dropping into items.
+All requid blocks such as water, lava, and any other requids from other MODs can NOT be erased unless you put enough "sand" block(s) into "Filling Resources" inventory.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>removeUp</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Remover(Top to Bottom) Module</title>
+<text>
+Remove all blocks in the area you limited with blocks dropping into items but those disappearing in just 1 second.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>removeDown</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Flattening Module</title>
+<text>
+Flattening area you limited.
+All blocks in the area are automatically erased.
+If there were holes(only holes straight down) those are NOT automatically filled unless you put enough block(s) into "Filling Resources" inventory.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>flattener</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Hole Filling Module</title>
+<text>
+Filling holes with blocks in the "Filling Resources" inventory.
+You don't need Y coordinate.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>holefill</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Under Filling Module</title>
+<text>
+Filling all empty spaces 1 block below you limited down to Y=1.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>underfill</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Box Module</title>
+<text>
+Creating a box with blocks you put into "Filling Resources" inventory.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>fillbox</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Wall Module</title>
+<text>
+Creating a wall with blocks you put into "Filling Resources" inventory.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>fillwall</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Flooring Module</title>
+<text>
+Replacing blocks of the area 1 block lower you limited to blocks in "Filling Resources" inventory.
+Blocks already there can be erased automatically.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>flooring</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Placing Torch Module</title>
+<text>
+Placing torches evenly in the area you limited.
+Origin space between torches is 6 but you can set as you want in config file.
+You need to put blocks which you want to place into "Filling Resources" inventory.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>filltorch</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Towering Module</title>
+<text>
+Creating a tower of block you put into "Filling Resources" inventory.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>tower</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Erasing Liquid Module</title>
+<text>
+Erasing all liquid blocks in the area you limited.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>clearliquid</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Hoe Module</title>
+<text>
+Hoe the all dirt 1 block below you limited.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>fillhoe</name>
+    <size>three</size>
+</recipe>
+</page>
+<page type="sectionpage">
+<title>Quarry Module</title>
+<text>
+Erase all blocks 1 block below you limited down to Y=1.
+If there were no blocks on Y=0 those are automatically filled with bedrock.
+</text>
+</page>
+<page type="crafting">
+<text>FillerEX</text>
+<recipe>
+    <name>quarry</name>
+    <size>three</size>
+</recipe>
+</page>
+</book>

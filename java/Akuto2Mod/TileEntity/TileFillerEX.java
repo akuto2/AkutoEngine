@@ -46,10 +46,10 @@ public class TileFillerEX extends TileBuildCraftEX implements IInventory, IHasWo
 	/**
 	 * エネルギーを設定するメソッド
 	 * @param work 動くのに必要なエネルギー量
-	 * @param max 受け取るエネルギー量*work*10される
+	 * @param max 受け取るエネルギー量*work
 	 */
 	public void setPower(int work, int max) {
-		setBattery(new RFBattery(work * max * 10, work * max * 10, 0));
+		setBattery(new RFBattery(work * max, work * max, 0));
 		workEnergy = work;
 	}
 
@@ -355,7 +355,10 @@ public class TileFillerEX extends TileBuildCraftEX implements IInventory, IHasWo
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		return false;
+		if(slot < 9 || slot - 9 > 27) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
