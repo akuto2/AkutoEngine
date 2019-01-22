@@ -14,6 +14,7 @@ import Akuto2Mod.CreativeTab.CreativeTabAkutoEngine;
 import Akuto2Mod.Event.CommonEventHandler;
 import Akuto2Mod.Event.ToolTipEvent;
 import Akuto2Mod.Gui.GuiHandler;
+import Akuto2Mod.Items.FillerManual;
 import Akuto2Mod.Items.ItemAutoEngine;
 import Akuto2Mod.Items.ItemBlockTankEX;
 import Akuto2Mod.Items.ItemFillerPattern;
@@ -36,6 +37,7 @@ import Akuto2Mod.Pattern.FillerRemover2;
 import Akuto2Mod.Pattern.FillerTorch;
 import Akuto2Mod.Pattern.FillerTower;
 import Akuto2Mod.Pattern.FillerUnderFill;
+import Akuto2Mod.Player.PlayerHandler;
 import Akuto2Mod.TileEntity.TileAutoWorkBench;
 import Akuto2Mod.TileEntity.TileEMCBuilder;
 import Akuto2Mod.TileEntity.TileFillerEX;
@@ -75,6 +77,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
+import lib.utils.LogHelper;
 import lib.utils.Register;
 import lib.utils.UpdateChecker;
 import net.minecraft.block.Block;
@@ -87,7 +90,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
-@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.9", dependencies ="required-after:AkutoLib;required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
+@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.11", dependencies ="required-after:AkutoLib;required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
 public class Akuto2Core {
 	@Instance("AkutoEngine")
 	public static Akuto2Core instance;
@@ -112,6 +115,7 @@ public class Akuto2Core {
 	public static Block emcContainer;
 //	public static Block autoWorkBench;
 //	public static Block emcBuilder;
+	public static Item manualFiller;
 	public static Item engineItem;
 	public static Item engineChip;
 	public static Item heatPearl;
@@ -165,6 +169,7 @@ public class Akuto2Core {
 //		GameRegistry.registerBlock(autoWorkBench, "autoWorkBench");
 //		emcBuilder = new BlockEMCBuilder();
 //		GameRegistry.registerBlock(emcBuilder, "emcBuilder");
+		manualFiller = new FillerManual();
 		fillerEX = (new BlockFilllerEX());
 		fillerModule = new ItemFillerPattern();
 		register.register(engineBlock, ItemAutoEngine.class, "autoengine");
@@ -174,6 +179,7 @@ public class Akuto2Core {
 		register.register(coreElementary2, "coreElemntary2");
 		register.register(engineChip, "engineChip");
 		register.register(heatPearl, "heatPearl");
+		register.register(manualFiller, "manualFiller");
 		register.register(TankEX, ItemBlockTankEX.class, "TankEX");
 		register.register(pumpEX, ItemPumpEX.class, "pumpEX");
 		BuilderAPI.schematicRegistry.registerSchematicBlock(pumpEX, SchematicPump.class, new Object[0]);
@@ -219,6 +225,8 @@ public class Akuto2Core {
 
 		FMLCommonHandler.instance().bus().register(new CommonEventHandler());
 		MinecraftForge.EVENT_BUS.register(new CommonEventHandler());
+		FMLCommonHandler.instance().bus().register(new PlayerHandler());
+		MinecraftForge.EVENT_BUS.register(new PlayerHandler());
 		MinecraftForge.EVENT_BUS.register(new ToolTipEvent());
 		proxy.registerTileEntitySpecialRenderer();
 		GameRegistry.registerTileEntity(TileAutoEngine.class, "tile.autoengine");
@@ -267,6 +275,7 @@ public class Akuto2Core {
 		GameRegistry.addRecipe(new ItemStack(engineCore2), "aca", "cec", "aca", 'c', coreElementary1, 'e', coreElementary2, 'a', engineChip);
 		GameRegistry.addRecipe(new ItemStack(fillerEX), "b", 'b', filler);
 		GameRegistry.addRecipe(filler, "b", 'b', fillerEX);
+		GameRegistry.addRecipe(new ItemStack(manualFiller), "gbg", "bab", "gbg", 'g', Blocks.glass, 'b', Blocks.brick_block, 'a', Items.book);
 		GameRegistry.addRecipe(pumpEX1, "tit", "gpg", "sis", 't', tank, 'g', ironANDGate, 'p', pump, 'i', ironFluidPipe, 's', new ItemStack(Items.dye, 1, 8));
 		GameRegistry.addRecipe(infinityPump, "tct", "wpl", "bgb", 't', TankEX, 'p', pumpEX1, 'c', engineCore2, 'w', Items.water_bucket, 'l', Items.lava_bucket, 'g', goldFluidPipe, 'b', new ItemStack(Items.dye, 1, 12));
 		GameRegistry.addRecipe(pumpEX2, "tgt", "apa", "sgs", 't', tank, 'g', goldFluidPipe, 'p', pumpEX1, 'a', goldANDGate, 's', new ItemStack(Items.dye, 1, 8));
@@ -285,7 +294,8 @@ public class Akuto2Core {
 
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-
+		proxy.initialize();
+		LogHelper.logInfo(manualFiller.getUnlocalizedName());
 	}
 
 	@Mod.EventHandler
