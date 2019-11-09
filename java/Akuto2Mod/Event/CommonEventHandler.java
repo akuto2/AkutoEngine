@@ -51,7 +51,7 @@ public class CommonEventHandler{
 			if(event.entityLiving instanceof EntityChicken)
 				event.drops.add(new EntityItem(world, x, y, z, new ItemStack(Akuto2Core.coreElementary1, 1)));
 		}
-		if (noB < lootinglevel * 5){
+		if (noB < lootinglevel * 5 + 1){
 			if(event.entityLiving instanceof EntityCow)
 				event.drops.add(new EntityItem(world, x, y, z, new ItemStack(Akuto2Core.coreElementary2, 1)));
 		}
