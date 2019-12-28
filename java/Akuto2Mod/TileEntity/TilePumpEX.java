@@ -234,6 +234,12 @@ public class TilePumpEX extends TileBuildCraft implements IFluidHandler{
 		if(worldObj.isRemote) {
 			return;
 		}
+		if(powered) {
+			return;
+		}
+		if(tube == null) {
+			return;
+		}
 		if(tube.posY - aimY > tubeSpeed + 0.4D) {
 			tubeY = (tube.posY - tubeSpeed);
 			setTubePosition();
