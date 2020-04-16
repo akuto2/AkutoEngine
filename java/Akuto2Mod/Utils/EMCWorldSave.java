@@ -25,6 +25,10 @@ public class EMCWorldSave extends WorldSavedData{
 		return true;
 	}
 
+	public boolean isMaxEmc() {
+		return emc >= emcLimit;
+	}
+
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		emc = compound.getLong("EMCBuilder_EMC");

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import Akuto2Mod.Blocks.BlockAutoEngine;
+import Akuto2Mod.Blocks.BlockEMCBuilder;
 import Akuto2Mod.Blocks.BlockFilllerEX;
 import Akuto2Mod.Blocks.BlockPumpEX;
 import Akuto2Mod.Blocks.BlockTankEX;
@@ -90,7 +91,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
-@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.13", dependencies ="required-after:AkutoLib;required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
+@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.14", dependencies ="required-after:AkutoLib;required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
 public class Akuto2Core {
 	@Instance("AkutoEngine")
 	public static Akuto2Core instance;
@@ -114,7 +115,7 @@ public class Akuto2Core {
 	public static Block pumpEX;
 	public static Block emcContainer;
 //	public static Block autoWorkBench;
-//	public static Block emcBuilder;
+	public static Block emcBuilder;
 	public static Item manualFiller;
 	public static Item engineItem;
 	public static Item engineChip;
@@ -167,8 +168,8 @@ public class Akuto2Core {
 		pumpEX = (new BlockPumpEX()).setCreativeTab(tabAkutoEngine);
 //		autoWorkBench = (new BlockAutoWorkBench());
 //		GameRegistry.registerBlock(autoWorkBench, "autoWorkBench");
-//		emcBuilder = new BlockEMCBuilder();
-//		GameRegistry.registerBlock(emcBuilder, "emcBuilder");
+		emcBuilder = new BlockEMCBuilder();
+		GameRegistry.registerBlock(emcBuilder, "emcBuilder");
 		manualFiller = new FillerManual();
 		fillerEX = (new BlockFilllerEX());
 		fillerModule = new ItemFillerPattern();

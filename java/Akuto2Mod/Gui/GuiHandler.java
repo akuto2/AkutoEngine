@@ -30,7 +30,7 @@ public class GuiHandler implements IGuiHandler{
 			}
 		case 3:
 			if(tileEntity instanceof TileEMCBuilder) {
-				return new ContainerTileEMCBuilder(player.inventory, (TileEMCBuilder)tileEntity);
+				return new ContainerEMCBuilder(player.inventory, (TileEMCBuilder)tileEntity);
 			}
 		}
 		return null;
@@ -51,7 +51,7 @@ public class GuiHandler implements IGuiHandler{
 			}
 		case 3:
 			if(tileentity instanceof TileEMCBuilder) {
-				return new GuiTileEMCBuilder(player.inventory, (TileEMCBuilder) tileentity);
+				return new GuiEMCBuilder(player.inventory, (TileEMCBuilder) tileentity);
 			}
 		}
 		return null;
