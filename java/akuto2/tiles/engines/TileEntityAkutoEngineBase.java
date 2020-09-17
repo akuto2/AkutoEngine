@@ -9,14 +9,14 @@ import buildcraft.lib.engine.TileEngineBase_BC8;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileAkutoEngineBase extends TileEngineBase_BC8{
+public class TileEntityAkutoEngineBase extends TileEngineBase_BC8{
 	public long level;
 	private float progress;
 	private float lastProgress;
 	private int progressPart;
 	public static final long[] powerlevel = {1, 8, 32, 128, 512, 2048, 8192, 32768, 1000000};
 
-	public TileAkutoEngineBase(int meta) {
+	public TileEntityAkutoEngineBase(int meta) {
 		super();
 		initAkutoEngine(meta);
 	}

@@ -1,14 +1,14 @@
 package akuto2.blocks;
 
-import akuto2.tiles.engines.TileAkutoEngine;
-import akuto2.tiles.engines.TileAkutoEngine128;
-import akuto2.tiles.engines.TileAkutoEngine2048;
-import akuto2.tiles.engines.TileAkutoEngine32;
-import akuto2.tiles.engines.TileAkutoEngine512;
-import akuto2.tiles.engines.TileAkutoEngine8;
-import akuto2.tiles.engines.TileFinalEngine;
-import akuto2.tiles.engines.TileSuperEngine;
-import akuto2.tiles.engines.TileSuperEngine2;
+import akuto2.tiles.engines.TileEntityAkutoEngine;
+import akuto2.tiles.engines.TileEntityAkutoEngine128;
+import akuto2.tiles.engines.TileEntityAkutoEngine2048;
+import akuto2.tiles.engines.TileEntityAkutoEngine32;
+import akuto2.tiles.engines.TileEntityAkutoEngine512;
+import akuto2.tiles.engines.TileEntityAkutoEngine8;
+import akuto2.tiles.engines.TileEntityFinalEngine;
+import akuto2.tiles.engines.TileEntitySuperEngine;
+import akuto2.tiles.engines.TileEntitySuperEngine2;
 import akuto2.utils.enums.EnumEngineType;
 import akuto2.utils.properties.AkutoEngineProperty;
 import buildcraft.lib.engine.BlockEngineBase_BC8;
@@ -53,15 +53,15 @@ public class BlockAkutoEngine extends BlockEngineBase_BC8<EnumEngineType>{
 	public TileBC_Neptune createTileEntity(World world, IBlockState state) {
 		int meta = state.getValue(getEngineProperty()).ordinal();
 		switch(meta) {
-		case 0:	return new TileAkutoEngine();
-		case 1: return new TileAkutoEngine8();
-		case 2: return new TileAkutoEngine32();
-		case 3: return new TileAkutoEngine128();
-		case 4: return new TileAkutoEngine512();
-		case 5: return new TileAkutoEngine2048();
-		case 6: return new TileSuperEngine();
-		case 7: return new TileSuperEngine2();
-		case 8: return new TileFinalEngine();
+		case 0:	return new TileEntityAkutoEngine();
+		case 1: return new TileEntityAkutoEngine8();
+		case 2: return new TileEntityAkutoEngine32();
+		case 3: return new TileEntityAkutoEngine128();
+		case 4: return new TileEntityAkutoEngine512();
+		case 5: return new TileEntityAkutoEngine2048();
+		case 6: return new TileEntitySuperEngine();
+		case 7: return new TileEntitySuperEngine2();
+		case 8: return new TileEntityFinalEngine();
 		default: return null;
 		}
 	}

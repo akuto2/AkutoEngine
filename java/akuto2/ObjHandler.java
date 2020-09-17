@@ -2,15 +2,15 @@ package akuto2;
 
 import akuto2.blocks.BlockAkutoEngine;
 import akuto2.items.ItemBlockAkutoEngine;
-import akuto2.tiles.engines.TileAkutoEngine;
-import akuto2.tiles.engines.TileAkutoEngine128;
-import akuto2.tiles.engines.TileAkutoEngine2048;
-import akuto2.tiles.engines.TileAkutoEngine32;
-import akuto2.tiles.engines.TileAkutoEngine512;
-import akuto2.tiles.engines.TileAkutoEngine8;
-import akuto2.tiles.engines.TileFinalEngine;
-import akuto2.tiles.engines.TileSuperEngine;
-import akuto2.tiles.engines.TileSuperEngine2;
+import akuto2.tiles.engines.TileEntityAkutoEngine;
+import akuto2.tiles.engines.TileEntityAkutoEngine128;
+import akuto2.tiles.engines.TileEntityAkutoEngine2048;
+import akuto2.tiles.engines.TileEntityAkutoEngine32;
+import akuto2.tiles.engines.TileEntityAkutoEngine512;
+import akuto2.tiles.engines.TileEntityAkutoEngine8;
+import akuto2.tiles.engines.TileEntityFinalEngine;
+import akuto2.tiles.engines.TileEntitySuperEngine;
+import akuto2.tiles.engines.TileEntitySuperEngine2;
 import lib.utils.Register;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 @EventBusSubscriber(modid = "akutoengine")
 public class ObjHandler {
 	public static BlockAkutoEngine engineBlock;
+	public static Block fillerEX;
 
 	public static Register register = new Register("akutoengine", AkutoEngine.tabs);
 
@@ -41,14 +42,14 @@ public class ObjHandler {
 	}
 
 	public static void registerTileEntity() {
-		GameRegistry.registerTileEntity(TileAkutoEngine.class, new ResourceLocation("akutoengine", "engines.akutoengine"));
-		GameRegistry.registerTileEntity(TileAkutoEngine8.class, new ResourceLocation("akutoengine", "engines.akutoengine8"));
-		GameRegistry.registerTileEntity(TileAkutoEngine32.class, new ResourceLocation("akutoengine", "engines.akutoengine32"));
-		GameRegistry.registerTileEntity(TileAkutoEngine128.class, new ResourceLocation("akutoengine", "engines.akutoengine128"));
-		GameRegistry.registerTileEntity(TileAkutoEngine512.class, new ResourceLocation("akutoengine", "engines.akutoengine512"));
-		GameRegistry.registerTileEntity(TileAkutoEngine2048.class, new ResourceLocation("akutoengine", "engines.akutoengine2048"));
-		GameRegistry.registerTileEntity(TileSuperEngine.class, new ResourceLocation("akutoengine", "engines.superengine"));
-		GameRegistry.registerTileEntity(TileSuperEngine2.class, new ResourceLocation("akutoengine", "engines.superengine2"));
-		GameRegistry.registerTileEntity(TileFinalEngine.class, new ResourceLocation("akutoengine", "engines.finalengine"));
+		GameRegistry.registerTileEntity(TileEntityAkutoEngine.class, new ResourceLocation("akutoengine", "engines.akutoengine"));
+		GameRegistry.registerTileEntity(TileEntityAkutoEngine8.class, new ResourceLocation("akutoengine", "engines.akutoengine8"));
+		GameRegistry.registerTileEntity(TileEntityAkutoEngine32.class, new ResourceLocation("akutoengine", "engines.akutoengine32"));
+		GameRegistry.registerTileEntity(TileEntityAkutoEngine128.class, new ResourceLocation("akutoengine", "engines.akutoengine128"));
+		GameRegistry.registerTileEntity(TileEntityAkutoEngine512.class, new ResourceLocation("akutoengine", "engines.akutoengine512"));
+		GameRegistry.registerTileEntity(TileEntityAkutoEngine2048.class, new ResourceLocation("akutoengine", "engines.akutoengine2048"));
+		GameRegistry.registerTileEntity(TileEntitySuperEngine.class, new ResourceLocation("akutoengine", "engines.superengine"));
+		GameRegistry.registerTileEntity(TileEntitySuperEngine2.class, new ResourceLocation("akutoengine", "engines.superengine2"));
+		GameRegistry.registerTileEntity(TileEntityFinalEngine.class, new ResourceLocation("akutoengine", "engines.finalengine"));
 	}
 }

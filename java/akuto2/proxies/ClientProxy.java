@@ -4,15 +4,15 @@ import java.util.Collections;
 
 import akuto2.ObjHandler;
 import akuto2.renderer.engines.RenderAkutoEngine;
-import akuto2.tiles.engines.TileAkutoEngine;
-import akuto2.tiles.engines.TileAkutoEngine128;
-import akuto2.tiles.engines.TileAkutoEngine2048;
-import akuto2.tiles.engines.TileAkutoEngine32;
-import akuto2.tiles.engines.TileAkutoEngine512;
-import akuto2.tiles.engines.TileAkutoEngine8;
-import akuto2.tiles.engines.TileFinalEngine;
-import akuto2.tiles.engines.TileSuperEngine;
-import akuto2.tiles.engines.TileSuperEngine2;
+import akuto2.tiles.engines.TileEntityAkutoEngine;
+import akuto2.tiles.engines.TileEntityAkutoEngine128;
+import akuto2.tiles.engines.TileEntityAkutoEngine2048;
+import akuto2.tiles.engines.TileEntityAkutoEngine32;
+import akuto2.tiles.engines.TileEntityAkutoEngine512;
+import akuto2.tiles.engines.TileEntityAkutoEngine8;
+import akuto2.tiles.engines.TileEntityFinalEngine;
+import akuto2.tiles.engines.TileEntitySuperEngine;
+import akuto2.tiles.engines.TileEntitySuperEngine2;
 import akuto2.utils.enums.EnumEngineType;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -38,14 +38,14 @@ public class ClientProxy extends CommonProxy{
 
 	@Override
 	public void registerTileEntitySpecialRenderer() {
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAkutoEngine.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAkutoEngine8.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAkutoEngine32.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAkutoEngine128.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAkutoEngine512.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAkutoEngine2048.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
-		ClientRegistry.bindTileEntitySpecialRenderer(TileSuperEngine.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
-		ClientRegistry.bindTileEntitySpecialRenderer(TileSuperEngine2.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
-		ClientRegistry.bindTileEntitySpecialRenderer(TileFinalEngine.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAkutoEngine.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAkutoEngine8.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAkutoEngine32.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAkutoEngine128.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAkutoEngine512.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAkutoEngine2048.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySuperEngine.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySuperEngine2.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFinalEngine.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
 	}
 }

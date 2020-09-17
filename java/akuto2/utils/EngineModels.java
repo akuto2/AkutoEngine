@@ -5,16 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import akuto2.tiles.engines.TileAkutoEngine;
-import akuto2.tiles.engines.TileAkutoEngine128;
-import akuto2.tiles.engines.TileAkutoEngine2048;
-import akuto2.tiles.engines.TileAkutoEngine32;
-import akuto2.tiles.engines.TileAkutoEngine512;
-import akuto2.tiles.engines.TileAkutoEngine8;
-import akuto2.tiles.engines.TileAkutoEngineBase;
-import akuto2.tiles.engines.TileFinalEngine;
-import akuto2.tiles.engines.TileSuperEngine;
-import akuto2.tiles.engines.TileSuperEngine2;
+import akuto2.tiles.engines.TileEntityAkutoEngine;
+import akuto2.tiles.engines.TileEntityAkutoEngine128;
+import akuto2.tiles.engines.TileEntityAkutoEngine2048;
+import akuto2.tiles.engines.TileEntityAkutoEngine32;
+import akuto2.tiles.engines.TileEntityAkutoEngine512;
+import akuto2.tiles.engines.TileEntityAkutoEngine8;
+import akuto2.tiles.engines.TileEntityAkutoEngineBase;
+import akuto2.tiles.engines.TileEntityFinalEngine;
+import akuto2.tiles.engines.TileEntitySuperEngine;
+import akuto2.tiles.engines.TileEntitySuperEngine2;
 import akuto2.utils.enums.EnumEngineType;
 import buildcraft.api.enums.EnumPowerStage;
 import buildcraft.lib.client.model.ModelHolderVariable;
@@ -76,7 +76,7 @@ public class EngineModels {
 		}
 	}
 
-	private static MutableQuad[] getEngineQuads(ModelHolderVariable model, TileAkutoEngineBase tile, float partialTicks) {
+	private static MutableQuad[] getEngineQuads(ModelHolderVariable model, TileEntityAkutoEngineBase tile, float partialTicks) {
 		ENGINE_PROGRESS.value = tile.getProgressClient(partialTicks);
 		ENGINE_STAGE.value = tile.getPowerStage();
 		ENGINE_FACING.value = tile.getCurrentFacing();
@@ -86,24 +86,24 @@ public class EngineModels {
 		return model.getCutoutQuads();
 	}
 
-	public static MutableQuad[] getEngineQuads(TileAkutoEngineBase engine, float partialTicks) {
-		if(engine instanceof TileAkutoEngine)
+	public static MutableQuad[] getEngineQuads(TileEntityAkutoEngineBase engine, float partialTicks) {
+		if(engine instanceof TileEntityAkutoEngine)
 			return getEngineQuads(AKUTO_ENGINE.get(EnumEngineType.X1), engine, partialTicks);
-		else if(engine instanceof TileAkutoEngine8)
+		else if(engine instanceof TileEntityAkutoEngine8)
 			return getEngineQuads(AKUTO_ENGINE.get(EnumEngineType.X8), engine, partialTicks);
-		else if(engine instanceof TileAkutoEngine32)
+		else if(engine instanceof TileEntityAkutoEngine32)
 			return getEngineQuads(AKUTO_ENGINE.get(EnumEngineType.X32), engine, partialTicks);
-		else if(engine instanceof TileAkutoEngine128)
+		else if(engine instanceof TileEntityAkutoEngine128)
 			return getEngineQuads(AKUTO_ENGINE.get(EnumEngineType.X128), engine, partialTicks);
-		else if(engine instanceof TileAkutoEngine512)
+		else if(engine instanceof TileEntityAkutoEngine512)
 			return getEngineQuads(AKUTO_ENGINE.get(EnumEngineType.X512), engine, partialTicks);
-		else if(engine instanceof TileAkutoEngine2048)
+		else if(engine instanceof TileEntityAkutoEngine2048)
 			return getEngineQuads(AKUTO_ENGINE.get(EnumEngineType.X2048), engine, partialTicks);
-		else if(engine instanceof TileSuperEngine)
+		else if(engine instanceof TileEntitySuperEngine)
 			return getEngineQuads(AKUTO_ENGINE.get(EnumEngineType.SUPER), engine, partialTicks);
-		else if(engine instanceof TileSuperEngine2)
+		else if(engine instanceof TileEntitySuperEngine2)
 			return getEngineQuads(AKUTO_ENGINE.get(EnumEngineType.SUPER2), engine, partialTicks);
-		else if(engine instanceof TileFinalEngine)
+		else if(engine instanceof TileEntityFinalEngine)
 			return getEngineQuads(AKUTO_ENGINE.get(EnumEngineType.FINAL), engine, partialTicks);
 		else
 			return null;
