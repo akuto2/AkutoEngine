@@ -1,0 +1,7 @@
+{
+    "textures": {
+        "#back":"akutoengine:blocks/engine/final/back",
+        "#side":"akutoengine:blocks/engine/final/side"
+    },
+    "parent":"buildcraftlib:models/block/engine_base"
+}

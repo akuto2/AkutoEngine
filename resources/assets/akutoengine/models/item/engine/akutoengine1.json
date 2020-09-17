@@ -1,0 +1,8 @@
+{
+    "parent":"akutoengine:models/block/engine/akutoengine1",
+    "values": {
+        "facing":"'up'",
+        "stage":"'red'",
+        "progress": "0.2"
+    }
+}
