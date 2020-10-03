@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "akutoengine:blocks/filler_front",
+        "north": "akutoengine:blocks/filler_front",
+        "east": "akutoengine:blocks/filler_front",
+        "south": "akutoengine:blocks/filler_front",
+        "west": "akutoengine:blocks/filler_front",
+        "up": "akutoengine:blocks/filler_top",
+        "down": "akutoengine:blocks/filler_top"
+    }
+}

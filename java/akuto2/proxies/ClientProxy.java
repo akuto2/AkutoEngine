@@ -3,7 +3,9 @@ package akuto2.proxies;
 import java.util.Collections;
 
 import akuto2.ObjHandler;
-import akuto2.renderer.engines.RenderAkutoEngine;
+import akuto2.renderer.RenderAkutoEngine;
+import akuto2.renderer.RenderFillerEX;
+import akuto2.tiles.TileEntityFillerEX;
 import akuto2.tiles.engines.TileEntityAkutoEngine;
 import akuto2.tiles.engines.TileEntityAkutoEngine128;
 import akuto2.tiles.engines.TileEntityAkutoEngine2048;
@@ -29,11 +31,15 @@ public class ClientProxy extends CommonProxy{
 
 	@SubscribeEvent
 	public static void ModelRegistry(ModelRegistryEvent event) {
+		ModelLoader.setCustomStateMapper((Block)ObjHandler.engineBlock, b -> Collections.emptyMap());
+
 		for(EnumEngineType engineType : EnumEngineType.VALUES) {
 			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ObjHandler.engineBlock), engineType.ordinal(), new ModelResourceLocation(engineType.resourceLocation, "inventory"));
 		}
-
-		ModelLoader.setCustomStateMapper((Block)ObjHandler.engineBlock, b -> Collections.emptyMap());
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ObjHandler.fillerEX), 0, new ModelResourceLocation("akutoengine:fillerex", "inventory"));
+		for(int i = 0; i < ObjHandler.fillerModule.maxItem; i++) {
+			ModelLoader.setCustomModelResourceLocation(ObjHandler.fillerModule, i, new ModelResourceLocation("akutoengine:fillermodule/fillermodule_" + i, "inventory"));
+		}
 	}
 
 	@Override
@@ -47,5 +53,6 @@ public class ClientProxy extends CommonProxy{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySuperEngine.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySuperEngine2.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFinalEngine.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFillerEX.class, (TileEntitySpecialRenderer)new RenderFillerEX());
 	}
 }

@@ -1,5 +1,6 @@
 package akuto2.tiles.engines;
 
+import akuto2.utils.energy.EnergyUtils;
 import buildcraft.api.enums.EnumPowerStage;
 import buildcraft.api.mj.IMjConnector;
 import buildcraft.api.mj.IMjReceiver;
@@ -8,13 +9,15 @@ import buildcraft.lib.engine.EngineConnector;
 import buildcraft.lib.engine.TileEngineBase_BC8;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityAkutoEngineBase extends TileEngineBase_BC8{
 	public long level;
 	private float progress;
 	private float lastProgress;
 	private int progressPart;
-	public static final long[] powerlevel = {1, 8, 32, 128, 512, 2048, 8192, 32768, 1000000};
+	public static final int[] powerlevel = {1, 8, 32, 128, 512, 2048, 8192, 32768, 1000000};
 
 	public TileEntityAkutoEngineBase(int meta) {
 		super();
@@ -22,7 +25,7 @@ public class TileEntityAkutoEngineBase extends TileEngineBase_BC8{
 	}
 
 	public void initAkutoEngine(int meta) {
-		level = powerlevel[meta];
+		level = EnergyUtils.changeRFToMJ(powerlevel[meta]);
 	}
 
 	@Override
@@ -88,6 +91,18 @@ public class TileEntityAkutoEngineBase extends TileEngineBase_BC8{
 		}
 
 		markChunkDirty();
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public float getProgressClient(float partialTicks) {
+		float last = this.lastProgress;
+		float now = this.progress;
+		if ((double)last > 0.5D && (double)now < 0.5D) {
+			++now;
+		}
+		float interp = last * (1.0F - partialTicks) + now * partialTicks;
+		return interp % 1.0F;
 	}
 
 	@Override

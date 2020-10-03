@@ -1,4 +1,4 @@
-package akuto2.utils;
+package akuto2.utils.models;
 
 import java.util.Arrays;
 import java.util.HashMap;
