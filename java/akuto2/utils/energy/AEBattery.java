@@ -1,8 +1,8 @@
 package akuto2.utils.energy;
 
-import cofh.redstoneflux.api.IEnergyStorage;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.energy.IEnergyStorage;
 
 /**
  * MJ・RF・FEを管理するためのバッテリー
@@ -79,6 +79,10 @@ public class AEBattery implements INBTSerializable<NBTTagCompound>, IEnergyStora
 		return useEnergy(0, Math.min(energy, EnergyUtils.changeMJToRF(this.maxExtract)), simulate);
 	}
 
+	public void clearEnergy() {
+		energy = 0L;
+	}
+
 	@Override
 	public int getEnergyStored() {
 		return EnergyUtils.changeMJToRF(energy);
@@ -122,6 +126,10 @@ public class AEBattery implements INBTSerializable<NBTTagCompound>, IEnergyStora
 		}
 	}
 
+	public long extractMJ(long mj, boolean simulate) {
+		return EnergyUtils.changeRFToMJ(useEnergy(0, Math.min(EnergyUtils.changeMJToRF(mj), EnergyUtils.changeMJToRF(this.maxReceive)), simulate));
+	}
+
 	/**
 	 * MJ換算の現在の容量を取得する
 	 */
@@ -144,5 +152,21 @@ public class AEBattery implements INBTSerializable<NBTTagCompound>, IEnergyStora
 		this.maxEnergy = maxEnergy;
 		this.maxReceive = maxReceive;
 		this.maxExtract = maxExtract;
+	}
+
+	@Override
+	public boolean canExtract() {
+		if(maxExtract > 0 && getMjStored() > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean canReceive() {
+		if(maxReceive > 0 && !isFull()) {
+			return true;
+		}
+		return false;
 	}
 }

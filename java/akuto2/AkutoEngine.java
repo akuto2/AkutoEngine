@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import akuto2.gui.GuiHandler;
 import akuto2.proxies.CommonProxy;
 import akuto2.utils.CreativeTabAkutoEngine;
+import akuto2.utils.ModInfo;
 import lib.utils.UpdateChecker;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
@@ -33,6 +34,7 @@ public class AkutoEngine {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		ModInfo.registerInfo(meta);
 		NetworkRegistry.INSTANCE.registerGuiHandler(AkutoEngine.instance, new GuiHandler());
 	}
 

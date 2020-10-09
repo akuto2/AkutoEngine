@@ -20,7 +20,6 @@ import buildcraft.lib.misc.NBTUtilBC;
 import buildcraft.lib.misc.data.Box;
 import buildcraft.lib.misc.data.ModelVariableData;
 import buildcraft.lib.net.PacketBufferBC;
-import cofh.redstoneflux.api.IEnergyReceiver;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -38,7 +37,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TileEntityFillerEX extends TileBuildCraftEX implements IEnergyReceiver, IInventory, IControllable {
+public class TileEntityFillerEX extends TileBuildCraftEX implements IInventory, IControllable {
 	public static final int NET_BOX = IDS.allocId("BOX");
 	public NonNullList<ItemStack> craft = NonNullList.withSize(9, ItemStack.EMPTY);
 	public NonNullList<ItemStack> container = NonNullList.withSize(27, ItemStack.EMPTY);
@@ -81,7 +80,7 @@ public class TileEntityFillerEX extends TileBuildCraftEX implements IEnergyRecei
 	 * 初期位置を設定する
 	 */
 	public void initTargetPosition() {
-		if(box.min() != null && box.max() != null) {
+		if(box.isInitialized()) {
 			sx = (int)box.min().getX();
 			sy = (int)box.min().getY();
 			sz = (int)box.min().getZ();
@@ -92,6 +91,44 @@ public class TileEntityFillerEX extends TileBuildCraftEX implements IEnergyRecei
 			cy = sy;
 			cz = sz;
 			now = 0;
+		}
+	}
+
+	/**
+	 * 初期位置と向きを設定する
+	 */
+	public void initRotationPosition() {
+		if(box.isInitialized()) {
+			sy = (int)box.min().getY();
+			ey = (int)box.max().getY();
+			int bsx = (int)box.min().getX();
+			int bsz = (int)box.min().getZ();
+			int bex = (int)box.max().getX();
+			int bez = (int)box.max().getZ();
+			if(bsx >= pos.getX()) {
+				sx = bsx;
+				ex = bex;
+				mx = 1;
+			}
+			else {
+				sx = bex;
+				ex = bsx;
+				mx = -1;
+			}
+			if(bsz >= pos.getZ()) {
+				sz = bsz;
+				ez = bex;
+				mz = 1;
+			}
+			else {
+				sz = bez;
+				ez = bsz;
+				mz = -1;
+			}
+			now = 0;
+			cx = sx;
+			cy = sy;
+			cz = sz;
 		}
 	}
 
@@ -180,9 +217,13 @@ public class TileEntityFillerEX extends TileBuildCraftEX implements IEnergyRecei
 	}
 
 	public void SetWorkMode(EnumWorkType work) {
-		world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockFillerEX.WORK, work));
-		validate();
-		world.setTileEntity(pos, this);
+		IBlockState state = world.getBlockState(pos);
+
+		if(state != state.withProperty(BlockFillerEX.WORK, work)) {
+			world.setBlockState(pos, state.withProperty(BlockFillerEX.WORK, work));
+			validate();
+			world.setTileEntity(pos, this);
+		}
 	}
 
 	/**
@@ -320,30 +361,6 @@ public class TileEntityFillerEX extends TileBuildCraftEX implements IEnergyRecei
 	}
 
 	@Override
-	public int getEnergyStored(EnumFacing facing) {
-		return battery.getEnergyStored();
-	}
-
-	@Override
-	public int getMaxEnergyStored(EnumFacing facing) {
-		return battery.getMaxEnergyStored();
-	}
-
-	@Override
-	public boolean canConnectEnergy(EnumFacing facing) {
-		return true;
-	}
-
-	@Override
-	public int receiveEnergy(EnumFacing facing, int energy, boolean simulate) {
-		if(battery != null && canConnectEnergy(facing)) {
-			return battery.receiveEnergy(Math.min(energy, battery.getMaxReceived()), simulate);
-		} else {
-			return 0;
-		}
-	}
-
-	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 		return (capability == CapabilityEnergy.ENERGY || super.hasCapability(capability, facing));
 	}
@@ -355,6 +372,9 @@ public class TileEntityFillerEX extends TileBuildCraftEX implements IEnergyRecei
 		}
 		if(capability == MjAPI.CAP_RECEIVER) {
 			return MjAPI.CAP_RECEIVER.cast(receiver);
+		}
+		if(capability == CapabilityEnergy.ENERGY) {
+			return CapabilityEnergy.ENERGY.cast(battery);
 		}
 		return super.getCapability(capability, facing);
 	}
