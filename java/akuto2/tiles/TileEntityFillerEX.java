@@ -117,7 +117,7 @@ public class TileEntityFillerEX extends TileBuildCraftEX implements IInventory, 
 			}
 			if(bsz >= pos.getZ()) {
 				sz = bsz;
-				ez = bex;
+				ez = bez;
 				mz = 1;
 			}
 			else {

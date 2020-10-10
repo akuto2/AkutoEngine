@@ -20,7 +20,7 @@ public class AkutoEngineConfig {
 
 	public static final Filler filler = new Filler();
 	public static class Filler{
-		@Comment("Torch Module Interval: 2 - 64")
+		@Comment("Torch Module Interval")
 		@RangeInt(min = 2, max = 64)
 		public int intervalTorch = 6;
 	}
