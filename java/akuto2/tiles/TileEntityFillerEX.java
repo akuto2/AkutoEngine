@@ -3,6 +3,8 @@ package akuto2.tiles;
 import java.io.IOException;
 import java.util.Optional;
 
+import javax.annotation.Nonnull;
+
 import akuto2.blocks.BlockFillerEX;
 import akuto2.patterns.FillerPatternCore;
 import akuto2.patterns.FillerPatternRecipe;
@@ -412,7 +414,7 @@ public class TileEntityFillerEX extends TileBuildCraftEX implements IInventory, 
 	}
 
 	@Override
-	public void setInventorySlotContents(int index, ItemStack stack) {
+	public void setInventorySlotContents(int index,@Nonnull ItemStack stack) {
 		if(index < craft.size()) {
 			craft.set(index, stack);
 		}
@@ -497,8 +499,11 @@ public class TileEntityFillerEX extends TileBuildCraftEX implements IInventory, 
 	public void closeInventory(EntityPlayer player) {}
 
 	@Override
-	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		return false;
+	public boolean isItemValidForSlot(int index,@Nonnull ItemStack stack) {
+		if(index < 9 || index - 9 > 27) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override

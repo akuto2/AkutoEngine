@@ -5,9 +5,9 @@ import javax.annotation.Nonnull;
 import akuto2.tiles.TileEntityFillerEX;
 import net.minecraft.item.ItemStack;
 
-public class FillerFillAll extends FillerPatternCore{
-	public FillerFillAll() {
-		super(0);
+public class FillerUnderFill extends FillerPatternCore{
+	public FillerUnderFill() {
+		super(6);
 	}
 
 	@Override
@@ -18,6 +18,9 @@ public class FillerFillAll extends FillerPatternCore{
 	@Override
 	public void initialize(TileEntityFillerEX fillerEX) {
 		super.initialize(fillerEX);
-		fillerEX.setPower(16, 512);
+		fillerEX.setPower(16, 256);
+		fillerEX.ey = fillerEX.sy - 1;
+		fillerEX.sy = 1;
+		fillerEX.cy = 1;
 	}
 }

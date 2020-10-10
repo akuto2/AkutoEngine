@@ -34,7 +34,7 @@ public class FillerPatternRecipe {
 		input = stacks;
 	}
 
-	private static NonNullList<ItemStack> getInputNonNullList(int width, int height, ItemStack... stacks){
+	private static NonNullList<ItemStack> getInputNonNullList(int width, int height,@Nonnull ItemStack... stacks){
 		NonNullList<ItemStack> list = NonNullList.withSize(width * height, ItemStack.EMPTY);
 
 		int x = 0;
@@ -102,7 +102,7 @@ public class FillerPatternRecipe {
 		return true;
 	}
 
-	public static void addRecipe(FillerPatternCore pattern, ItemStack stack) {
+	public static void addRecipe(FillerPatternCore pattern,@Nonnull ItemStack stack) {
 		recipes.add(new FillerPatternRecipe(1, 1, pattern, stack));
 	}
 

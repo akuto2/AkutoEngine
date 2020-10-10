@@ -40,6 +40,13 @@ public class ClientProxy extends CommonProxy{
 		for(int i = 0; i < ObjHandler.fillerModule.maxItem; i++) {
 			ModelLoader.setCustomModelResourceLocation(ObjHandler.fillerModule, i, new ModelResourceLocation("akutoengine:fillermodule/fillermodule_" + i, "inventory"));
 		}
+
+		ModelLoader.setCustomModelResourceLocation(ObjHandler.engineChip, 0, new ModelResourceLocation("akutoengine:enginechip", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(ObjHandler.heatPearl, 0, new ModelResourceLocation("akutoengine:heatpearl", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(ObjHandler.engineCore, 0, new ModelResourceLocation("akutoengine:enginecore", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(ObjHandler.engineCore2, 0, new ModelResourceLocation("akutoengine:enginecoremk2", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(ObjHandler.coreElementary, 0, new ModelResourceLocation("akutoengine:coreelementary", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(ObjHandler.coreElementary2, 0, new ModelResourceLocation("akutoengine:coreelementary2", "inventory"));
 	}
 
 	@Override

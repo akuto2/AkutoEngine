@@ -5,19 +5,19 @@ import javax.annotation.Nonnull;
 import akuto2.tiles.TileEntityFillerEX;
 import net.minecraft.item.ItemStack;
 
-public class FillerFillAll extends FillerPatternCore{
-	public FillerFillAll() {
-		super(0);
+public class FillerRemover extends FillerPatternCore{
+	public FillerRemover() {
+		super(2);
 	}
 
 	@Override
 	public boolean iteratePattern(TileEntityFillerEX fillerEX,@Nonnull ItemStack stack) {
-		return fill(fillerEX, stack);
+		return emptyDU(fillerEX, stack);
 	}
 
 	@Override
 	public void initialize(TileEntityFillerEX fillerEX) {
-		super.initialize(fillerEX);
-		fillerEX.setPower(16, 512);
+		fillerEX.initRotationPosition();
+		fillerEX.setPower(32, 2);
 	}
 }
