@@ -3,6 +3,7 @@ package akuto2.proxies;
 import java.util.Collections;
 
 import akuto2.ObjHandler;
+import akuto2.compat.Compat;
 import akuto2.renderer.RenderAkutoEngine;
 import akuto2.renderer.RenderFillerEX;
 import akuto2.tiles.TileEntityFillerEX;
@@ -47,6 +48,8 @@ public class ClientProxy extends CommonProxy{
 		ModelLoader.setCustomModelResourceLocation(ObjHandler.engineCore2, 0, new ModelResourceLocation("akutoengine:enginecoremk2", "inventory"));
 		ModelLoader.setCustomModelResourceLocation(ObjHandler.coreElementary, 0, new ModelResourceLocation("akutoengine:coreelementary", "inventory"));
 		ModelLoader.setCustomModelResourceLocation(ObjHandler.coreElementary2, 0, new ModelResourceLocation("akutoengine:coreelementary2", "inventory"));
+
+		Compat.registerModel();
 	}
 
 	@Override

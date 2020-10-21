@@ -2,6 +2,7 @@ package akuto2;
 
 import java.util.logging.Logger;
 
+import akuto2.compat.Compat;
 import akuto2.gui.GuiHandler;
 import akuto2.proxies.CommonProxy;
 import akuto2.utils.CreativeTabAkutoEngine;
@@ -18,7 +19,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-@Mod(modid = "akutoengine", name = "AkutoEngine", version = "2.0.0")
+@Mod(modid = "akutoengine", name = "AkutoEngine", version = "2.0.0", dependencies = "required-after:akutolib;required-after:buildcraftenergy;after:ic2;after:projecte")
 public class AkutoEngine {
 	@Instance("akutoengine")
 	public static AkutoEngine instance;
@@ -36,6 +37,7 @@ public class AkutoEngine {
 	public void preInit(FMLPreInitializationEvent event) {
 		ModInfo.registerInfo(meta);
 		NetworkRegistry.INSTANCE.registerGuiHandler(AkutoEngine.instance, new GuiHandler());
+		Compat.census();
 	}
 
 	@EventHandler

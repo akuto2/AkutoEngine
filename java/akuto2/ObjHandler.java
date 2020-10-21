@@ -2,6 +2,7 @@ package akuto2;
 
 import akuto2.blocks.BlockAkutoEngine;
 import akuto2.blocks.BlockFillerEX;
+import akuto2.compat.Compat;
 import akuto2.items.ItemBlockAkutoEngine;
 import akuto2.items.ItemFillerPattern;
 import akuto2.patterns.FillerClearLiquid;
@@ -68,6 +69,8 @@ public class ObjHandler {
 
 		register.register(engineBlock, "akutoengine");
 		register.register(fillerEX, "fillerex");
+
+		Compat.registerBlock(register);
 	}
 
 	@SubscribeEvent
@@ -91,6 +94,8 @@ public class ObjHandler {
 		register.register(coreElementary, "coreElementary");
 		register.register(coreElementary2, "coreElementary2");
 		registerFillerModules();
+
+		Compat.registerItem(register);
 	}
 
 	public static void registerTileEntity() {
@@ -104,6 +109,8 @@ public class ObjHandler {
 		GameRegistry.registerTileEntity(TileEntitySuperEngine2.class, new ResourceLocation("akutoengine", "engines.superengine2"));
 		GameRegistry.registerTileEntity(TileEntityFinalEngine.class, new ResourceLocation("akutoengine", "engines.finalengine"));
 		GameRegistry.registerTileEntity(TileEntityFillerEX.class, new ResourceLocation("akutoengine", "tile.fillerEX"));
+
+		Compat.registerTileEntity();
 	}
 
 	public static void registerFillerModules() {
