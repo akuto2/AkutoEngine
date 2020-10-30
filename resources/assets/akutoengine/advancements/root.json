@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "akutoengine:akutoengine",
+            "data": 0
+        },
+        "title": "AkutoEngine",
+        "description": {
+            "translate": "advancements.akutoengine.root.desc"
+        },
+        "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+        "show_toast": false
+    },
+    "criteria": {
+        "has_stick": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "buildcraftcore:engine",
+                        "data": 0
+                    }
+                ]
+            }
+        }
+    }
+}

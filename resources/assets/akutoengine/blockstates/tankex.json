@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "joined_below=false": { "model": "akutoengine:tankex" },
+        "joined_below=true": { "model": "akutoengine:tankex_joined_below" }
+    }
+}

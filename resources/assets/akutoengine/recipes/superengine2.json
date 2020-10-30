@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "akutoengine:akutoengine",
+        "data": 7
+    },
+    "type": "minecraft:crafting_shaped",
+    "pattern":[
+        "cec",
+        "ece",
+        "cec"
+    ],
+    "key":{
+        "c":{
+            "item": "akutoengine:engineCoreMk2"
+        },
+        "e":{
+            "item": "akutoengine:akutoengine",
+            "data": 6
+        }
+    }
+}

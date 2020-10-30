@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "akutoengine:coreElementary2"
+        },
+        "title": {
+            "translate": "advancements.akutoengine.leather.title"
+        },
+        "description": {
+            "translate": "advancements.akutoengine.leather.desc"
+        },
+        "frame": "challenge"
+    },
+    "parent": "akutoengine:feather",
+    "criteria": {
+        "engine": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "akutoengine:coreElementary2"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "display": {
+        "icon": {
+            "item": "akutoengine:akutoengine",
+            "data": 6
+        },
+        "title": {
+            "translate": "advancements.akutoengine.superengine.title"
+        },
+        "description": {
+            "translate": "advancements.akutoengine.superengine.desc"
+        },
+        "frame": "challenge"
+    },
+    "parent": "akutoengine:engine",
+    "criteria": {
+        "engine": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "akutoengine:akutoengine",
+                        "date": 6
+                    }
+                ]
+            }
+        }
+    }
+}

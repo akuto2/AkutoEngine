@@ -1,0 +1,20 @@
+{
+    "result": {
+        "item": "akutoengine:akutoengine",
+        "data": 0
+    },
+    "type": "minecraft:crafting_shaped",
+    "pattern":[
+        "w",
+        "e"
+    ],
+    "key":{
+        "w":{
+            "item": "akutoengine:engineChip"
+        },
+        "e":{
+            "item": "buildcraftcore:engine",
+            "data": 0
+        }
+    }
+}

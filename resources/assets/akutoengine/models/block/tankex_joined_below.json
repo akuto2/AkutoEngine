@@ -1,0 +1,7 @@
+{
+    "parent": "akutoengine:block/tankex",
+    "textures": {
+        "particle": "akutoengine:blocks/tank_side_joined_below",
+        "side": "akutoengine:blocks/tank_side_joined_below"
+    }
+}

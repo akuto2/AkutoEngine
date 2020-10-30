@@ -6,7 +6,9 @@ import akuto2.ObjHandler;
 import akuto2.compat.Compat;
 import akuto2.renderer.RenderAkutoEngine;
 import akuto2.renderer.RenderFillerEX;
+import akuto2.renderer.RenderTankEX;
 import akuto2.tiles.TileEntityFillerEX;
+import akuto2.tiles.TileEntityTankEX;
 import akuto2.tiles.engines.TileEntityAkutoEngine;
 import akuto2.tiles.engines.TileEntityAkutoEngine128;
 import akuto2.tiles.engines.TileEntityAkutoEngine2048;
@@ -41,6 +43,7 @@ public class ClientProxy extends CommonProxy{
 		for(int i = 0; i < ObjHandler.fillerModule.maxItem; i++) {
 			ModelLoader.setCustomModelResourceLocation(ObjHandler.fillerModule, i, new ModelResourceLocation("akutoengine:fillermodule/fillermodule_" + i, "inventory"));
 		}
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ObjHandler.tankEX), 0, new ModelResourceLocation("akutoengine:tankex", "inventory"));
 
 		ModelLoader.setCustomModelResourceLocation(ObjHandler.engineChip, 0, new ModelResourceLocation("akutoengine:enginechip", "inventory"));
 		ModelLoader.setCustomModelResourceLocation(ObjHandler.heatPearl, 0, new ModelResourceLocation("akutoengine:heatpearl", "inventory"));
@@ -64,5 +67,6 @@ public class ClientProxy extends CommonProxy{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySuperEngine2.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFinalEngine.class, (TileEntitySpecialRenderer)RenderAkutoEngine.INSTANCE);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFillerEX.class, (TileEntitySpecialRenderer)new RenderFillerEX());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTankEX.class, (TileEntitySpecialRenderer)new RenderTankEX());
 	}
 }

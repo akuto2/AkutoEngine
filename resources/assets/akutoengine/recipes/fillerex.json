@@ -1,0 +1,33 @@
+{
+    "result": {
+        "item": "akutoengine:fillerex"
+    },
+    "type": "minecraft:crafting_shaped",
+    "pattern":[
+        "imi",
+        "yty",
+        "gcg"
+    ],
+    "key":{
+        "i":{
+            "item": "minecraft:dye",
+            "data": 0
+        },
+        "y":{
+            "item": "minecraft:dye",
+            "data": 11
+        },
+        "t":{
+            "item": "minecraft:crafting_table"
+        },
+        "c":{
+            "item": "minecraft:chest"
+        },
+        "m":{
+            "item": "buildcraftcore:marker_volume"
+        },
+        "g":{
+            "item": "buildcraftcore:gear_gold"
+        }
+    }
+}

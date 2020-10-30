@@ -1,0 +1,29 @@
+{
+    "conditions": [
+        {
+            "type": "finaltype_enabled"
+        }
+    ],
+    "result": {
+        "item": "akutoengine:akutoengine",
+        "data": 8
+    },
+    "type": "minecraft:crafting_shaped",
+    "pattern":[
+        "beb",
+        "ece",
+        "beb"
+    ],
+    "key":{
+        "b":{
+            "item": "minecraft:bedrock"
+        },
+        "c":{
+            "item": "akutoengine:engineCoreMk2"
+        },
+        "e":{
+            "item": "akutoengine:akutoengine",
+            "data": 7
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "akutoengine:akutoengine",
+        "data": 1
+    },
+    "type": "minecraft:crafting_shaped",
+    "pattern":[
+        "eee",
+        "eie",
+        "eee"
+    ],
+    "key":{
+        "i":{
+            "item": "buildcraftcore:gear_iron"
+        },
+        "e":{
+            "item": "akutoengine:akutoengine",
+            "data": 0
+        }
+    }
+}

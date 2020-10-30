@@ -3,6 +3,7 @@ package akuto2.tiles;
 import java.io.IOException;
 
 import buildcraft.api.core.BCLog;
+import buildcraft.lib.misc.BlockUtil;
 import buildcraft.lib.misc.MessageUtil;
 import buildcraft.lib.misc.data.IdAllocator;
 import buildcraft.lib.net.IPayloadReceiver;
@@ -38,6 +39,10 @@ public class TileBuildCraftEX extends TileEntity implements ITickable, IPayloadR
 	}
 
 	public void initialize() {}
+
+	public final TileEntity getNeighbourTile(EnumFacing offset) {
+		return BlockUtil.getTileEntity(world, getPos().offset(offset), true);
+	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
@@ -124,6 +129,17 @@ public class TileBuildCraftEX extends TileEntity implements ITickable, IPayloadR
 		buffer.writeShort(id);
 		writer.write(buffer);
 		return new MessageUpdateTile(pos, buffer);
+	}
+
+	public final void createAndSendMessage(int id, IPayloadWriter writer) {
+		if(hasWorld()) {
+			IMessage message = createMessage(id, writer);
+			if(world.isRemote) {
+				MessageManager.sendToServer(message);
+			} else {
+				MessageUtil.sendToAllWatching(world, pos, message);
+			}
+		}
 	}
 
 	public final void sendNetworkUpdate(int id) {

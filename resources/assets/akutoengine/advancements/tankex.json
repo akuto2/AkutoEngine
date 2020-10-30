@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "akutoengine:tankex"
+        },
+        "title": {
+            "translate": "advancements.akutoengine.tankex.title"
+        },
+        "description": {
+            "translate": "advancements.akutoengine.tankex.desc"
+        },
+        "frame": "task"
+    },
+    "parent": "akutoengine:root",
+    "criteria": {
+        "engine": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "akutoengine:tankex"
+                    }
+                ]
+            }
+        }
+    }
+}

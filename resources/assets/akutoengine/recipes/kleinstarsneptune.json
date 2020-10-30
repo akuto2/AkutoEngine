@@ -1,0 +1,23 @@
+{
+    "conditions":[
+        {
+            "type": "pe_enabled"
+        }
+    ],
+    "result":{
+        "item": "akutoengine:kleinstarex",
+        "data": 0
+    },
+    "type": "minecraft:crafting_shaped",
+    "pattern":[
+        "kkk",
+        "k k",
+        "kkk"
+    ],
+    "key":{
+        "k":{
+            "item": "projecte:item.pe_klein_star",
+            "data": 5
+        }
+    }
+}

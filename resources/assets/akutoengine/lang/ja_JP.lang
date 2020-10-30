@@ -44,21 +44,22 @@ fillerPattern.14.name=露天採掘モジュール
 tile.tankEX.name=タンク改
 tile.fillerEX.name=フィラー改
 
-achievement.getAkutoEngine=これは…木エンジン？
-achievement.getSuperEngine=§5最高級のエンジンを！§r
-achievement.getTank=230万杯の液体を！
-achievement.getFiller=あの頃を思い出せ！
-achievement.getPump=吸えるだけ吸い込め！
-achievement.getFeather=§e超エンジンの材料part1§r
-achievement.getLeather=§e超エンジンの材料part2§r
+advancements.akutoengine.engine.title=これは…木エンジン？
+advancements.akutoengine.superengine.title=§5最高級のエンジンを！§r
+advancements.akutoengine.tankex.title=230万杯の液体を！
+advancements.akutoengine.fillerex.title=あの頃を思い出せ！
+advancements.akutoengine.pumpex.title=吸えるだけ吸い込め！
+advancements.akutoengine.feather.title=§e超エンジンの材料part1§r
+advancements.akutoengine.leather.title=§e超エンジンの材料part2§r
 
-achievement.getAkutoEngine.desc=Akutoエンジンを作成する
-achievement.getSuperEngine.desc=超エンジン牙王を作成する
-achievement.getTank.desc=タンク改を作成する
-achievement.getFiller.desc=フィラー改を作成する
-achievement.getPump.desc=ポンプ改を作成する
-achievement.getFeather.desc=鳥から鳥の黒羽を入手する
-achievement.getLeather.desc=牛から牛の黒皮を入手する
+advancements.akutoengine.root.desc=すべての木エンジン好きへ
+advancements.akutoengine.engine.desc=Akutoエンジンを作成する
+advancements.akutoengine.superengine.desc=超エンジン牙王を作成する
+advancements.akutoengine.tankex.desc=タンク改を作成する
+advancements.akutoengine.fillerex.desc=フィラー改を作成する
+advancements.akutoengine.pumpex.desc=ポンプ改を作成する
+advancements.akutoengine.feather.desc=鳥から鳥の黒羽を入手する
+advancements.akutoengine.leather.desc=牛から牛の黒皮を入手する
 
 akutoengine.update.server=AkutoEnigneが%1$sにアップデートされました。ダウンロードはこちら:%2$s.
 akutoengine.update.client=§c§lAkutoEnigne§rが%1$sにアップデートされました！ §5§nここからダウンロードしてください！§r

@@ -1,9 +1,13 @@
 package akuto2;
 
+import com.google.common.collect.ImmutableSet;
+
 import akuto2.blocks.BlockAkutoEngine;
 import akuto2.blocks.BlockFillerEX;
+import akuto2.blocks.BlockTankEX;
 import akuto2.compat.Compat;
 import akuto2.items.ItemBlockAkutoEngine;
+import akuto2.items.ItemBlockTankEX;
 import akuto2.items.ItemFillerPattern;
 import akuto2.patterns.FillerClearLiquid;
 import akuto2.patterns.FillerEraser;
@@ -23,6 +27,7 @@ import akuto2.patterns.FillerTorch;
 import akuto2.patterns.FillerTower;
 import akuto2.patterns.FillerUnderFill;
 import akuto2.tiles.TileEntityFillerEX;
+import akuto2.tiles.TileEntityTankEX;
 import akuto2.tiles.engines.TileEntityAkutoEngine;
 import akuto2.tiles.engines.TileEntityAkutoEngine128;
 import akuto2.tiles.engines.TileEntityAkutoEngine2048;
@@ -32,6 +37,18 @@ import akuto2.tiles.engines.TileEntityAkutoEngine8;
 import akuto2.tiles.engines.TileEntityFinalEngine;
 import akuto2.tiles.engines.TileEntitySuperEngine;
 import akuto2.tiles.engines.TileEntitySuperEngine2;
+import akuto2.utils.Utils;
+import buildcraft.api.mj.MjAPI;
+import buildcraft.api.recipes.AssemblyRecipeBasic;
+import buildcraft.api.recipes.IngredientStack;
+import buildcraft.core.BCCoreBlocks;
+import buildcraft.lib.recipe.AssemblyRecipeRegistry;
+import buildcraft.lib.recipe.IngredientNBTBC;
+import buildcraft.silicon.BCSiliconItems;
+import buildcraft.silicon.gate.EnumGateLogic;
+import buildcraft.silicon.gate.EnumGateMaterial;
+import buildcraft.silicon.gate.EnumGateModifier;
+import buildcraft.silicon.gate.GateVariant;
 import lib.utils.Register;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -39,16 +56,21 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
 
 @EventBusSubscriber(modid = "akutoengine")
 public class ObjHandler {
 	public static BlockAkutoEngine engineBlock;
 	public static Block fillerEX;
+	public static Block tankEX;
 
 	public static ItemFillerPattern fillerModule;
 	public static Item engineItem;
@@ -66,9 +88,11 @@ public class ObjHandler {
 		register.setRegistry(event.getRegistry());
 		engineBlock = new BlockAkutoEngine();
 		fillerEX = new BlockFillerEX();
+		tankEX = new BlockTankEX();
 
 		register.register(engineBlock, "akutoengine");
 		register.register(fillerEX, "fillerex");
+		register.register(tankEX, "tankex");
 
 		Compat.registerBlock(register);
 	}
@@ -86,6 +110,7 @@ public class ObjHandler {
 
 		register.register(new ItemBlockAkutoEngine(engineBlock).setRegistryName(engineBlock.getRegistryName()));
 		register.register(new ItemBlock(fillerEX).setRegistryName(fillerEX.getRegistryName()));
+		register.register(new ItemBlockTankEX(tankEX).setRegistryName(tankEX.getRegistryName()));
 		register.register(fillerModule, "fillermodule");
 		register.register(engineChip, "engineChip");
 		register.register(heatPearl, "heatPearl");
@@ -96,6 +121,23 @@ public class ObjHandler {
 		registerFillerModules();
 
 		Compat.registerItem(register);
+	}
+
+	@SubscribeEvent
+	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+		ItemStack ironEngine = new ItemStack(BCCoreBlocks.engine, 1, 2);
+		Ingredient redstoneChip = Ingredient.fromStacks(new ItemStack(BCSiliconItems.redstoneChipset, 1, 0));
+		IngredientNBTBC ironANDGate = new IngredientNBTBC(BCSiliconItems.plugGate.getStack(new GateVariant(EnumGateLogic.AND, EnumGateMaterial.IRON, EnumGateModifier.NO_MODIFIER)));
+		IngredientNBTBC goldORGate = new IngredientNBTBC(BCSiliconItems.plugGate.getStack(new GateVariant(EnumGateLogic.OR, EnumGateMaterial.GOLD, EnumGateModifier.NO_MODIFIER)));
+		IngredientNBTBC goldANDGate = new IngredientNBTBC(BCSiliconItems.plugGate.getStack(new GateVariant(EnumGateLogic.AND, EnumGateMaterial.GOLD, EnumGateModifier.NO_MODIFIER)));
+		IngredientNBTBC goldORDiamondGate = new IngredientNBTBC(BCSiliconItems.plugGate.getStack(new GateVariant(EnumGateLogic.OR, EnumGateMaterial.GOLD, EnumGateModifier.DIAMOND)));
+		IngredientNBTBC goldANDDiamondGate = new IngredientNBTBC(BCSiliconItems.plugGate.getStack(new GateVariant(EnumGateLogic.AND, EnumGateMaterial.GOLD, EnumGateModifier.DIAMOND)));
+		// ゲートを使うレシピはJsonだと指定できないのでこっちで追加
+		IForgeRegistry<IRecipe> registry = event.getRegistry();
+		registry.register(new ShapedRecipes("akutoengine", 3, 3, Utils.getIngredientList("gag", "aia", "gag", 'a', new ItemStack(engineBlock, 1, 3), 'g', goldORGate, 'i', ironEngine), new ItemStack(engineBlock, 1, 4)).setRegistryName("akutoengine512"));
+		registry.register(new ShapedRecipes("akutoengine", 3, 3, Utils.getIngredientList("dad", "aia", "dad", 'a', new ItemStack(engineBlock, 1, 4), 'd', goldORDiamondGate, 'i', ironEngine), new ItemStack(engineBlock, 1, 5)).setRegistryName("akutoengine2048"));
+		// レーザーを使うレシピの追加
+		AssemblyRecipeRegistry.register(new AssemblyRecipeBasic("enginechip", 60000 * MjAPI.MJ, ImmutableSet.of(IngredientStack.of(redstoneChip), IngredientStack.of(new ItemStack(heatPearl, 4))), new ItemStack(engineChip)));
 	}
 
 	public static void registerTileEntity() {
@@ -109,6 +151,7 @@ public class ObjHandler {
 		GameRegistry.registerTileEntity(TileEntitySuperEngine2.class, new ResourceLocation("akutoengine", "engines.superengine2"));
 		GameRegistry.registerTileEntity(TileEntityFinalEngine.class, new ResourceLocation("akutoengine", "engines.finalengine"));
 		GameRegistry.registerTileEntity(TileEntityFillerEX.class, new ResourceLocation("akutoengine", "tile.fillerEX"));
+		GameRegistry.registerTileEntity(TileEntityTankEX.class, new ResourceLocation("akutoengine", "tile.tankEX"));
 
 		Compat.registerTileEntity();
 	}

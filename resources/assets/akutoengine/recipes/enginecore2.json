@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "akutoengine:engineCore"
+    },
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "aca",
+        "cec",
+        "aca"
+    ],
+    "key": {
+        "a": {
+            "item": "akutoengine:engineChip"
+        },
+        "c": {
+            "item": "akutoengine:coreElementary"
+        },
+        "e": {
+            "item": "akutoengine:coreElementary2"
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "result": {
+        "item": "akutoengine:akutoengine",
+        "data": 3
+    },
+    "type": "minecraft:crafting_shaped",
+    "pattern":[
+        "ded",
+        "eie",
+        "ded"
+    ],
+    "key":{
+        "d":{
+            "item": "buildcraftsilicon:redstone_chipset",
+            "data": 4
+        },
+        "i":{
+            "item": "buildcraftcore:engine",
+            "data": 2
+        },
+        "e":{
+            "item": "akutoengine:akutoengine",
+            "data": 2
+        }
+    }
+}

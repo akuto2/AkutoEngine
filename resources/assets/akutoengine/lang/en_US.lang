@@ -44,21 +44,22 @@ fillerPattern.14.name=Quarry Module
 tile.tankEX.name=TankEX
 tile.fillerEX.name=FillerEX
 
-achievement.getAkutoEngine=Is this ... a wooden engine?
-achievement.getSuperEngine=§5The finest engine!§r
-achievement.getTank=2.3 million cups of liquid!
-achievement.getFiller=Remember BC3.1.x!
-achievement.getPump=Just suck in and suck!
-achievement.getFeather=§eSuper engine material part1§r
-achievement.getLeather=§eSuper engine material part2§r
+advancements.akutoengine.engine.title=Is this ... a wooden engine?
+advancements.akutoengine.superengine.title=§5The finest engine!§r
+advancements.akutoengine.tankex.title=2.3 million cups of liquid!
+advancements.akutoengine.fillerex.title=Remember BC3.1.x!
+advancements.akutoengine.pumpex.title=Just suck in and suck!
+advancements.akutoengine.feather.title=§eSuper engine material part1§r
+advancements.akutoengine.leather.title=§eSuper engine material part2§r
 
-achievement.getAkutoEngine.desc=Create an Akuto Engine
-achievement.getSuperEngine.desc=Create a Super Engine "Gaou"
-achievement.getTank.desc=Create a TankEX
-achievement.getFiller.desc=Create a FillerEX
-achievement.getPump.desc=Create a PumpEX
-achievement.getFeather.desc=Get a "Black Feather of Chicken" from chickens
-achievement.getLeather.desc=Get a "Black Leather of Cow" from cows
+advancements.akutoengine.root.desc=For all wooden engine lovers
+advancements.akutoengine.engine.desc=Create an Akuto Engine
+advancements.akutoengine.superengine.desc=Create a Super Engine "Gaou"
+advancements.akutoengine.tankex.desc=Create a TankEX
+advancements.akutoengine.fillerex.desc=Create a FillerEX
+advancements.akutoengine.pumpex.desc=Create a PumpEX
+advancements.akutoengine.feather.desc=Get a "Black Feather of Chicken" from chickens
+advancements.akutoengine.leather.desc=Get a "Black Leather of Cow" from cows
 
 akutoengine.update.server=AkutoEnigne has been update to %1$s. available to %2$s.
 akutoengine.update.client=§c§lAkutoEnigne§r has been update to %1$s. §5§nPlease check from here.§r

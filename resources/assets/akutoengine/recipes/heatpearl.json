@@ -1,0 +1,15 @@
+{
+    "result": {
+        "item": "akutoengine:heatPearl"
+    },
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "bb",
+        "bb"
+    ],
+    "key": {
+        "b": {
+            "item": "minecraft:blaze_rod"
+        }
+    }
+}

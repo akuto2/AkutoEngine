@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "akutoengine:akutoengine",
+        "data": 2
+    },
+    "type": "minecraft:crafting_shaped",
+    "pattern":[
+        "ded",
+        "eie",
+        "ded"
+    ],
+    "key":{
+        "d":{
+            "item": "buildcraftcore:gear_diamond"
+        },
+        "i":{
+            "item": "buildcraftcore:engine",
+            "data": 2
+        },
+        "e":{
+            "item": "akutoengine:akutoengine",
+            "data": 1
+        }
+    }
+}
