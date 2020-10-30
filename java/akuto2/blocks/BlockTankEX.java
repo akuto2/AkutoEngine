@@ -3,7 +3,6 @@ package akuto2.blocks;
 import akuto2.tiles.TileEntityTankEX;
 import buildcraft.api.properties.BuildCraftProperties;
 import buildcraft.api.transport.pipe.ICustomPipeConnection;
-import buildcraft.factory.block.ITankBlockConnector;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -158,12 +157,12 @@ public class BlockTankEX extends Block implements ICustomPipeConnection{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-		return side.getAxis() != Axis.Y || !(blockAccess.getBlockState(pos.offset(side)).getBlock() instanceof ITankBlockConnector);
+		return side.getAxis() != Axis.Y || !(blockAccess.getBlockState(pos.offset(side)).getBlock() instanceof BlockTankEX);
 	}
 
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		boolean isTankBelow = worldIn.getBlockState(pos.down()).getBlock() instanceof ITankBlockConnector;
+		boolean isTankBelow = worldIn.getBlockState(pos.down()).getBlock() instanceof BlockTankEX;
 		return state.withProperty(JOINED_BELOW, isTankBelow);
 	}
 
