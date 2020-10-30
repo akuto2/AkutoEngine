@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-@Mod(modid = "akutoengine", name = "AkutoEngine", version = "2.0.0", dependencies = "required-after:akutolib;required-after:buildcraftenergy;after:ic2;after:projecte")
+@Mod(modid = "akutoengine", name = "AkutoEngine", version = "2.0.0", dependencies = "required-after:akutolib;required-after:buildcraftenergy;after:projecte")
 public class AkutoEngine {
 	@Instance("akutoengine")
 	public static AkutoEngine instance;
