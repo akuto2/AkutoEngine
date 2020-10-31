@@ -3,6 +3,10 @@
         "1.7.10":{
             "version": "1.3.13",
             "downloadUrl":"https://minecraft.curseforge.com/projects/akuto-engine"
+        },
+        "1.12.2":{
+            "version": "2.0.0",
+            "downloadUrl":"https://minecraft.curseforge.com/projects/akuto-engine"
         }
     }
 ]
