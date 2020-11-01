@@ -38,7 +38,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * エンジンのモデルを登録するためのクラス
  */
-@EventBusSubscriber(modid = "akutoengine")
+@EventBusSubscriber(value = Side.CLIENT, modid = "akutoengine")
 public class EngineModels {
 	private static final NodeVariableDouble ENGINE_PROGRESS;
 	private static final NodeVariableObject<EnumPowerStage> ENGINE_STAGE;
@@ -78,7 +78,6 @@ public class EngineModels {
 
 	private static MutableQuad[] getEngineQuads(ModelHolderVariable model, TileEntityAkutoEngineBase tile, float partialTicks) {
 		ENGINE_PROGRESS.value = tile.getProgressClient(partialTicks);
-		ENGINE_STAGE.value = tile.getPowerStage();
 		ENGINE_FACING.value = tile.getCurrentFacing();
 		if(tile.clientModelData.hasNoNodes())
 			tile.clientModelData.setNodes(model.createTickableNodes());

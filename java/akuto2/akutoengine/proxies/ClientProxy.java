@@ -28,10 +28,10 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
-@EventBusSubscriber(modid = "akutoengine")
+@EventBusSubscriber(value = Side.CLIENT, modid = "akutoengine")
 public class ClientProxy extends CommonProxy{
-
 	@SubscribeEvent
 	public static void ModelRegistry(ModelRegistryEvent event) {
 		ModelLoader.setCustomStateMapper((Block)ObjHandler.engineBlock, b -> Collections.emptyMap());
