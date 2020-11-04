@@ -4,16 +4,16 @@ import buildcraft.api.mj.MjAPI;
 
 public class EnergyUtils {
 	/**
-	 * MJ換算のものをRFに変える(MJで割って10倍する)
+	 * MJ換算のものをRFに変える
 	 */
 	public static int changeMJToRF(long mj) {
-		return (int)((mj / MjAPI.MJ) * 10);
+		return (int)(mj / MjAPI.MJ);
 	}
 
 	/**
 	 * RF換算のものをMJに変える
 	 */
 	public static long changeRFToMJ(int rf) {
-		return ((rf / 10) * MjAPI.MJ);
+		return rf * MjAPI.MJ;
 	}
 }
