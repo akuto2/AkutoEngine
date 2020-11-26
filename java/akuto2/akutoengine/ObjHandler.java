@@ -41,6 +41,7 @@ import buildcraft.api.mj.MjAPI;
 import buildcraft.api.recipes.AssemblyRecipeBasic;
 import buildcraft.api.recipes.IngredientStack;
 import buildcraft.core.BCCoreBlocks;
+import buildcraft.factory.BCFactoryBlocks;
 import buildcraft.lib.recipe.AssemblyRecipeRegistry;
 import buildcraft.lib.recipe.IngredientNBTBC;
 import buildcraft.silicon.BCSiliconItems;
@@ -135,6 +136,7 @@ public class ObjHandler {
 		IForgeRegistry<IRecipe> registry = event.getRegistry();
 		RecipeRegister.addRecipe(registry, "akutoengine", "akutoengine512", new ItemStack(engineBlock, 1, 4), "gag", "aia", "gag", 'a', new ItemStack(engineBlock, 1, 3), 'g', goldORGate, 'i', ironEngine);
 		RecipeRegister.addRecipe(registry, "akutoengine", "akutoengine2048", new ItemStack(engineBlock, 1, 5), "dad", "aia", "dad", 'a', new ItemStack(engineBlock, 1, 4), 'd', goldORDiamondGate, 'i', ironEngine);
+		RecipeRegister.addRecipe(registry, "akutoengine", "tankex", new ItemStack(tankEX), "eae", "ata", "eae", 'e', engineCore, 'a', engineCore2, 't', BCFactoryBlocks.tank);
 		// レーザーを使うレシピの追加
 		AssemblyRecipeRegistry.register(new AssemblyRecipeBasic("enginechip", 60000 * MjAPI.MJ, ImmutableSet.of(IngredientStack.of(redstoneChip), IngredientStack.of(new ItemStack(heatPearl, 4))), new ItemStack(engineChip)));
 	}
