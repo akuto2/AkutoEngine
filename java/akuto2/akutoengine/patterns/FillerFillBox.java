@@ -12,7 +12,7 @@ public class FillerFillBox extends FillerPatternCore{
 
 	@Override
 	public boolean iteratePattern(TileEntityFillerEX fillerEX,@Nonnull ItemStack stack) {
-		if(fillerEX.now == 0 && fill(fillerEX.sx, fillerEX.sy, fillerEX.sz, fillerEX.ex, fillerEX.ey, fillerEX.ez, fillerEX, stack)) {
+		if(fillerEX.now == 0 && fill(fillerEX.sx, fillerEX.sy, fillerEX.sz, fillerEX.ex, fillerEX.sy, fillerEX.ez, fillerEX, stack)) {
 			modeChange(fillerEX, fillerEX.sx, fillerEX.sy, fillerEX.sz);
 		}
 		if(fillerEX.now == 1 && fill(fillerEX.sx, fillerEX.sy, fillerEX.sz, fillerEX.sx, fillerEX.ey, fillerEX.ez, fillerEX, stack)) {
