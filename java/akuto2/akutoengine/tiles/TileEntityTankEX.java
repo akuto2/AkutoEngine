@@ -36,8 +36,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityTankEX extends TileBuildCraftEX implements ITickable, IFluidHandlerAdv {
-	public static final IdAllocator IDS = TileBuildCraftEX.IDS.makeChild("tank");
-	public static final int NET_FLUID_DELTA = IDS.allocId("FLUID_DELTA");
+	public static final IdAllocator IDS;
+	public static final int NET_FLUID_DELTA;
 	private static final ResourceLocation ADVANCEMENT_STORE_FLUIDS = new ResourceLocation("buildcraftfactory:fluid_storage");
 
 	private static boolean isPlayerInteracting = false;
@@ -47,6 +47,12 @@ public class TileEntityTankEX extends TileBuildCraftEX implements ITickable, IFl
 
 	protected TankManager tankManager = new TankManager();
 	private int lastComparatorLevel;
+
+	static {
+		IDS = TileBuildCraftEX.IDS.makeChild("tank");
+
+		NET_FLUID_DELTA = IDS.allocId("FLUID_DELTA");
+	}
 
 	public TileEntityTankEX() {
 		this(2100000 * Fluid.BUCKET_VOLUME);

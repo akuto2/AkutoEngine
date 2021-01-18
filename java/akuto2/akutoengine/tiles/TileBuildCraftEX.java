@@ -27,8 +27,12 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class TileBuildCraftEX extends TileEntity implements ITickable, IPayloadReceiver{
 	protected static final IdAllocator IDS = new IdAllocator("tile");
-	public static final int NET_RENDER_DATA = IDS.allocId("RENDER_DATA");
+	public static final int NET_RENDER_DATA;
 	private boolean init = false;
+
+	static {
+		NET_RENDER_DATA = IDS.allocId("RENDER_DATA");
+	}
 
 	@Override
 	public void update() {

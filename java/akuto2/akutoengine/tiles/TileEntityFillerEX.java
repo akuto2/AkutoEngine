@@ -40,7 +40,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityFillerEX extends TileBuildCraftEX implements IInventory, IControllable {
-	public static final int NET_BOX = IDS.allocId("BOX");
+	public static final int NET_BOX;
 	public NonNullList<ItemStack> craft = NonNullList.withSize(9, ItemStack.EMPTY);
 	public NonNullList<ItemStack> container = NonNullList.withSize(27, ItemStack.EMPTY);
 	public int currentSlot;
@@ -60,6 +60,10 @@ public class TileEntityFillerEX extends TileBuildCraftEX implements IInventory, 
 	private AEBatteryReceiver receiver;
 	private boolean finished;
 	private Mode mode;
+
+	static {
+		NET_BOX = IDS.allocId("BOX");
+	}
 
 	public TileEntityFillerEX() {
 		setBattery(new AEBattery(1000L * MjAPI.MJ, 1000L * MjAPI.MJ, 0));;

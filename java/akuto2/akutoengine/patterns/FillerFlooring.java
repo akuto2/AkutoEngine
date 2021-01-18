@@ -52,6 +52,6 @@ public class FillerFlooring extends FillerPatternCore{
 	private boolean isChange(TileEntityFillerEX fillerEX,@Nonnull ItemStack checkStack) {
 		Block changeBlock = fillerEX.getWorld().getBlockState(new BlockPos(fillerEX.cx, fillerEX.cy, fillerEX.cz)).getBlock();
 		ItemStack stack = new ItemStack(changeBlock);
-		return changeBlock != Blocks.AIR && changeBlock != ObjHandler.fillerEX && stack != checkStack;
+		return changeBlock != Blocks.AIR && changeBlock != ObjHandler.fillerEX && !stack.isItemEqual(checkStack);
 	}
 }
