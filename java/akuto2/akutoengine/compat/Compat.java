@@ -2,9 +2,11 @@ package akuto2.akutoengine.compat;
 
 import akuto2.akutoengine.compat.pe.ProjectE;
 import lib.utils.Register;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class Compat {
 	public static boolean ic2 = false;
@@ -24,6 +26,12 @@ public class Compat {
 	public static void registerItem(Register register) {
 		if(pe) {
 			ProjectE.registerItem(register);
+		}
+	}
+
+	public static void registerRecipe(IForgeRegistry<IRecipe> registry) {
+		if(pe) {
+			ProjectE.registerRecipes(registry);
 		}
 	}
 

@@ -1,6 +1,5 @@
 {
     "conditions":{
         "finaltype_enabled": "akuto2.akutoengine.config.FinalTypeEnabledFactory",
-        "pe_enabled": "akuto2.akutoengine.compat.pe.ProjectE"
     }
 }

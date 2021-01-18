@@ -139,6 +139,8 @@ public class ObjHandler {
 		RecipeRegister.addRecipe(registry, "akutoengine", "tankex", new ItemStack(tankEX), "eae", "ata", "eae", 'e', engineCore, 'a', engineCore2, 't', BCFactoryBlocks.tank);
 		// レーザーを使うレシピの追加
 		AssemblyRecipeRegistry.register(new AssemblyRecipeBasic("enginechip", 60000 * MjAPI.MJ, ImmutableSet.of(IngredientStack.of(redstoneChip), IngredientStack.of(new ItemStack(heatPearl, 4))), new ItemStack(engineChip)));
+
+		Compat.registerRecipe(registry);
 	}
 
 	public static void registerTileEntity() {
