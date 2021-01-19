@@ -20,6 +20,7 @@ import buildcraft.api.tiles.IControllable;
 import buildcraft.lib.misc.BoundingBoxUtil;
 import buildcraft.lib.misc.NBTUtilBC;
 import buildcraft.lib.misc.data.Box;
+import buildcraft.lib.misc.data.IdAllocator;
 import buildcraft.lib.misc.data.ModelVariableData;
 import buildcraft.lib.net.PacketBufferBC;
 import net.minecraft.block.state.IBlockState;
@@ -40,7 +41,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityFillerEX extends TileBuildCraftEX implements IInventory, IControllable {
-	public static final int NET_BOX;
+	public static final IdAllocator IDS = TileBuildCraftEX.IDS.makeChild("filler");
+	public static final int NET_BOX = IDS.allocId("BOX");
 	public NonNullList<ItemStack> craft = NonNullList.withSize(9, ItemStack.EMPTY);
 	public NonNullList<ItemStack> container = NonNullList.withSize(27, ItemStack.EMPTY);
 	public int currentSlot;
@@ -60,10 +62,6 @@ public class TileEntityFillerEX extends TileBuildCraftEX implements IInventory, 
 	private AEBatteryReceiver receiver;
 	private boolean finished;
 	private Mode mode;
-
-	static {
-		NET_BOX = IDS.allocId("BOX");
-	}
 
 	public TileEntityFillerEX() {
 		setBattery(new AEBattery(1000L * MjAPI.MJ, 1000L * MjAPI.MJ, 0));;

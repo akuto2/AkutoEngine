@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = "akutoengine", name = "AkutoEngine", version = "2.0.7", dependencies = "required-after:akutolib@[3.0.1,);required-after:buildcraftenergy;after:projecte")
+@Mod(modid = "akutoengine", name = "AkutoEngine", version = "2.0.8", dependencies = "required-after:akutolib@[3.0.1,);required-after:buildcraftenergy;after:projecte")
 public class AkutoEngine {
 	@Instance("akutoengine")
 	public static AkutoEngine instance;
