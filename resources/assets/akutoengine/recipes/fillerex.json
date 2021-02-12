@@ -27,7 +27,8 @@
             "item": "buildcraftcore:marker_volume"
         },
         "g":{
-            "item": "buildcraftcore:gear_gold"
+            "type": "forge:ore_dict",
+            "ore": "gearGold"
         }
     }
 }
