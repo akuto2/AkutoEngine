@@ -10,8 +10,9 @@
         "ded"
     ],
     "key":{
-        "d":{
-            "item": "buildcraftcore:gear_diamond"
+        "d": {
+            "type": "forge:ore_dict",
+            "ore": "gearDiamond"
         },
         "i":{
             "item": "buildcraftcore:engine",

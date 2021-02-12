@@ -11,7 +11,8 @@
     ],
     "key":{
         "i":{
-            "item": "buildcraftcore:gear_iron"
+            "type": "forge:ore_dict",
+            "ore": "gearIron"
         },
         "e":{
             "item": "akutoengine:akutoengine",

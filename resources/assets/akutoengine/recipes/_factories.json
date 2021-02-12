@@ -1,5 +1,5 @@
 {
     "conditions":{
-        "finaltype_enabled": "akuto2.akutoengine.config.FinalTypeEnabledFactory",
+        "finaltype_enabled": "akuto2.akutoengine.config.FinalTypeEnabledFactory"
     }
 }
