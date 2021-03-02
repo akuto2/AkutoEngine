@@ -247,7 +247,7 @@ public abstract class FillerPatternCore {
 	 * ブロックの設置
 	 */
 	protected void setBlock(TileEntityFillerEX fillerEX, BlockPos pos,@Nonnull ItemStack stack) {
-		eraseBlock(fillerEX.getWorld(), pos);
+		fillerEX.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
 		fillerEX.player.setHeldItem(EnumHand.MAIN_HAND, stack);
 		if(stack.getItem().onItemUse(fillerEX.player, fillerEX.getWorld(), pos, EnumHand.MAIN_HAND, EnumFacing.UP, 0.0F, 0.0F, 0.0F) != EnumActionResult.SUCCESS) {
 			List entityList = fillerEX.getWorld().getEntitiesWithinAABBExcludingEntity(BuildCraftAPI.fakePlayerProvider.getBuildCraftPlayer((WorldServer)fillerEX.getWorld()), new AxisAlignedBB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1.0D, pos.getY() + 1.0D, pos.getZ() + 1.0D));
@@ -258,7 +258,7 @@ public abstract class FillerPatternCore {
 			}
 			stack.getItem().onItemUse(fillerEX.player, fillerEX.getWorld(), pos, EnumHand.MAIN_HAND, EnumFacing.UP, 0.0F, 0.0F, 0.0F);
 		}
-		fillerEX.player.inventory.setInventorySlotContents(0, ItemStack.EMPTY);
+		fillerEX.player.setHeldItem(EnumHand.MAIN_HAND, ItemStack.EMPTY);;
 	}
 
 	/**

@@ -186,7 +186,7 @@ public class TileEntityFillerEX extends TileBuildCraftEX implements IInventory, 
 		if(getBattery().useEnergy(workEnergy, workEnergy, false) < workEnergy)
 			return;
 
-		if(box.isInitialized() && currentPattern != null) {
+		if(box.isInitialized() && currentPattern != null && !done) {
 			SetWorkMode(EnumWorkType.On);
 			ItemStack stack = ItemStack.EMPTY;
 			currentSlot = 9;
