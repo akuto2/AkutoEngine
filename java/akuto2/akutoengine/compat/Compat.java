@@ -23,6 +23,8 @@ public class Compat {
 	}
 
 	public static void pre() {
+		census();
+
 		if(ic2) {
 			IndustrialCraft2.preIC2();
 		}
@@ -35,6 +37,8 @@ public class Compat {
 	}
 
 	public static void init() {
+		census();
+
 		if(ic2) {
 			IndustrialCraft2.initIC2();
 		}
@@ -53,6 +57,8 @@ public class Compat {
 	}
 
 	public static void postInit() {
+		census();
+
 		if(sb) {
 			StorageBox.post();
 		}

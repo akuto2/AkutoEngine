@@ -7,6 +7,7 @@ import java.util.List;
 
 import akuto2.akutoengine.blocks.BlockAutoEngine;
 import akuto2.akutoengine.blocks.BlockFilllerEX;
+import akuto2.akutoengine.blocks.BlockInfinityChest;
 import akuto2.akutoengine.blocks.BlockPumpEX;
 import akuto2.akutoengine.blocks.BlockTankEX;
 import akuto2.akutoengine.compat.Compat;
@@ -19,6 +20,7 @@ import akuto2.akutoengine.items.ItemBlockTankEX;
 import akuto2.akutoengine.items.ItemFillerPattern;
 import akuto2.akutoengine.items.ItemPumpEX;
 import akuto2.akutoengine.items.engineCore;
+import akuto2.akutoengine.packet.PacketHandler;
 import akuto2.akutoengine.pattern.FillerClearLiquid;
 import akuto2.akutoengine.pattern.FillerEraser;
 import akuto2.akutoengine.pattern.FillerFillAll;
@@ -38,6 +40,7 @@ import akuto2.akutoengine.pattern.FillerTower;
 import akuto2.akutoengine.pattern.FillerUnderFill;
 import akuto2.akutoengine.player.PlayerHandler;
 import akuto2.akutoengine.proxies.CommonProxy;
+import akuto2.akutoengine.tiles.TileEntityInfinityChest;
 import akuto2.akutoengine.tiles.TileFillerEX;
 import akuto2.akutoengine.tiles.TilePumpEX;
 import akuto2.akutoengine.tiles.TileTankEX;
@@ -89,13 +92,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
-@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.13", dependencies ="required-after:AkutoLib;required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
+@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.14", dependencies ="required-after:AkutoLib@[1.0.5,);required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
 public class AkutoEngine {
 	@Instance("AkutoEngine")
 	public static AkutoEngine instance;
 	@Metadata("AkutoEngine")
 	public static ModMetadata meta;
-	@SidedProxy(clientSide = "Akuto2Mod.Client.ClientProxy", serverSide = "Akuto2Mod.CommonProxy")
+	@SidedProxy(clientSide = "akuto2.akutoengine.proxies.ClientProxy", serverSide = "akuto2.akutoengine.proxies.CommonProxy")
 	public static CommonProxy proxy;
 	public static UpdateChecker update = null;
 
@@ -162,6 +165,7 @@ public class AkutoEngine {
 		heatPearl = (new engineCore()).setUnlocalizedName("heatPearl").setTextureName("akutoengine:heatPearl");
 		TankEX = (new BlockTankEX()).setCreativeTab(tabAkutoEngine);
 		pumpEX = (new BlockPumpEX()).setCreativeTab(tabAkutoEngine);
+		infinityChest = new BlockInfinityChest().setBlockName("infinityChest");
 		manualFiller = new FillerManual();
 		fillerEX = (new BlockFilllerEX());
 		fillerModule = new ItemFillerPattern();
@@ -176,6 +180,7 @@ public class AkutoEngine {
 		register.register(TankEX, ItemBlockTankEX.class, "TankEX");
 		register.register(pumpEX, ItemPumpEX.class, "pumpEX");
 		BuilderAPI.schematicRegistry.registerSchematicBlock(pumpEX, SchematicPump.class, new Object[0]);
+		register.register(infinityChest, "infinityChest");
 		register.register(fillerEX, "fillerEX");
 		register.register(fillerModule, "fillerModule");
 		registerFiller(new FillerFillAll(), "bbb", "bbb", "bbb", 0);
@@ -196,13 +201,11 @@ public class AkutoEngine {
 		GameRegistry.registerTileEntity(TileFillerEX.class, "tile.fillerEX");
 		AchievementHandler.addAchivement();
 
-		Compat.census();
 		Compat.pre();
 	}
 
 	@Mod.EventHandler
 	public void Init(FMLInitializationEvent event){
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		autoEngine1 = new ItemStack(engineBlock, 1, 0);
 		autoEngine2 = new ItemStack(engineBlock, 1, 1);
 		autoEngine3 = new ItemStack(engineBlock, 1, 2);
@@ -233,6 +236,7 @@ public class AkutoEngine {
 		GameRegistry.registerTileEntity(TileFinalEngine.class, "tile.finalengine");
 		GameRegistry.registerTileEntity(TileTankEX.class, "tile.tankEX");
 		GameRegistry.registerTileEntity(TilePumpEX.class, "tile.pumpEX");
+		GameRegistry.registerTileEntity(TileEntityInfinityChest.class, "tile.infinitychest");
 
 		ItemStack woodEngine = new ItemStack(BuildCraftCore.engineBlock, 1, 0);
 		ItemStack ironEngine = new ItemStack(BuildCraftCore.engineBlock, 1, 2);
@@ -279,6 +283,8 @@ public class AkutoEngine {
 			GameRegistry.addRecipe(pumpEX4, "tct", "dpd", "bcb", 't', TankEX, 'c', engineCore2, 'd', diaANDGate, 'p', pumpEX3, 'b', Blocks.bedrock);
 		}
 
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		PacketHandler.init();
 		Compat.init();
 	}
 
@@ -286,6 +292,7 @@ public class AkutoEngine {
 	public void postInit(FMLPostInitializationEvent event){
 		proxy.initialize();
 		LogHelper.logInfo(manualFiller.getUnlocalizedName());
+		Compat.postInit();
 	}
 
 	@Mod.EventHandler

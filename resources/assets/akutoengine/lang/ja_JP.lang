@@ -44,6 +44,7 @@ fillerPattern.13.name=クワモジュール
 fillerPattern.14.name=露天採掘モジュール
 tile.tankEX.name=タンク改
 tile.fillerEX.name=フィラー改
+tile.infinityChest.name=無限チェスト
 
 achievement.getAkutoEngine=これは…木エンジン？
 achievement.getSuperEngine=§5最高級のエンジンを！§r

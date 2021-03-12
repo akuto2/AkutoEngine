@@ -1,6 +1,8 @@
 package akuto2.akutoengine.utils.blocks;
 
 import akuto2.akutoengine.utils.WorldHelper;
+import lib.world.AdjacentBlocks;
+import lib.world.PosRange;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -69,7 +71,7 @@ public class AdjacentLiquids extends AdjacentBlocks{
 			return false;
 		}
 		if((isRange(x, y, z, range, mode)) && (!contains(x, y, z))) {
-			if(canAddBlock(world.getBlock(x, y, z))) {
+			if(canAddBlock(worldObj.getBlock(x, y, z))) {
 				add(x, y, z, range);
 			}
 		}
@@ -100,13 +102,13 @@ public class AdjacentLiquids extends AdjacentBlocks{
 			int px = pos.x;
 			int py = pos.y;
 			int pz = pos.z;
-			Block block = world.getBlock(px, py, pz);
-			int meta = world.getBlockMetadata(px, py, pz);
+			Block block = worldObj.getBlock(px, py, pz);
+			int meta = worldObj.getBlockMetadata(px, py, pz);
 			blocks.remove(index);
 			if(canAddBlock(block)) {
 				System.out.println("canAdd");
-				WorldHelper.setBlockToAir(world, px, py, pz);
-				world.markBlockForUpdate(px, py, pz);
+				WorldHelper.setBlockToAir(worldObj, px, py, pz);
+				worldObj.markBlockForUpdate(px, py, pz);
 				return meta == 0;
 			}
 		}

@@ -1,6 +1,7 @@
 package akuto2.akutoengine.items;
 
 import akuto2.akutoengine.AkutoEngine;
+import akuto2.akutoengine.utils.Utils;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -28,7 +29,7 @@ public class FillerManual extends Item{
 
 	@SideOnly(Side.CLIENT)
 	public void openBook(ItemStack stack, World world, EntityPlayer player){
-		player.openGui(AkutoEngine.instance, 4, world, 0, 0, 0);
+		player.openGui(AkutoEngine.instance, Utils.MANUAL_GUI_ID, world, 0, 0, 0);
 		FMLClientHandler.instance().displayGuiScreen(player, new GuiManual(stack, ClientProxy.getBookDataFromStack(stack)));
 	}
 

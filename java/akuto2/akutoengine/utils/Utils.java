@@ -8,9 +8,8 @@ public class Utils {
 	public static Object[] fillerRecipeItem = {'b', Blocks.brick_block, 'g', Blocks.glass};
 	public static int ELECTRIC_BLOCK_GUI_ID = 0;
 	public static int FILLER_EX_GUI_ID = 1;
-	public static int AUTO_WORKBENCH_GUI_ID = 2;
-	public static int EMC_BUILDER_GUI_ID = 3;
-	public static int MANUAL_GUI_ID = 4;
+	public static int MANUAL_GUI_ID = 2;
+	public static int INFINITY_CHEST_GUI_ID = 3;
 	// EMCコンテナ―の種類
 	public static int emcContainerType = 4;
 	// EMCコンテナ―の容量

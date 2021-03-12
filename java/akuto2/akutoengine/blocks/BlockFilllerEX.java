@@ -4,6 +4,7 @@ import java.util.Random;
 
 import akuto2.akutoengine.AkutoEngine;
 import akuto2.akutoengine.tiles.TileFillerEX;
+import akuto2.akutoengine.utils.Utils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -43,7 +44,7 @@ public class BlockFilllerEX extends BlockContainer {
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
 		if(!world.isRemote) {
-			player.openGui(AkutoEngine.instance, 1, world, x, y, z);
+			player.openGui(AkutoEngine.instance, Utils.FILLER_EX_GUI_ID, world, x, y, z);
 		}
 		return true;
 	}

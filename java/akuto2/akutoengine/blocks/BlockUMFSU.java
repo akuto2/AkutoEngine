@@ -4,6 +4,7 @@ import java.util.List;
 
 import akuto2.akutoengine.AkutoEngine;
 import akuto2.akutoengine.tiles.TileEntityUmfsu;
+import akuto2.akutoengine.utils.Utils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.tile.IWrenchable;
@@ -253,7 +254,7 @@ public class BlockUMFSU extends Block {
 			}
 		}
 		if(!player.isSneaking()){
-			player.openGui(AkutoEngine.instance, 0, world, x, y, z);
+			player.openGui(AkutoEngine.instance, Utils.ELECTRIC_BLOCK_GUI_ID, world, x, y, z);
 			return true;
 		}
 		return false;

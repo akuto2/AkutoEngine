@@ -9,7 +9,9 @@ import org.w3c.dom.Document;
 import akuto2.akutoengine.AkutoEngine;
 import akuto2.akutoengine.items.ManualInfo;
 import akuto2.akutoengine.renderer.RenderFillerEX;
+import akuto2.akutoengine.renderer.RenderInfinityChest;
 import akuto2.akutoengine.renderer.RenderTankEX;
+import akuto2.akutoengine.tiles.TileEntityInfinityChest;
 import akuto2.akutoengine.tiles.TileFillerEX;
 import akuto2.akutoengine.tiles.TileTankEX;
 import akuto2.akutoengine.tiles.engine.TileAutoEngineCore;
@@ -34,6 +36,7 @@ public class ClientProxy extends CommonProxy{
 	private static ResourceLocation chamberResourceLocation = new ResourceLocation("buildcraftenergy:textures/blocks/engineStone/chamber.png");
 	public static Document filler;
 	public static ManualInfo manualInfo;
+	public static Minecraft mc = Minecraft.getMinecraft();
 
 	public void registerRenderInformation(){}
 
@@ -79,6 +82,7 @@ public class ClientProxy extends CommonProxy{
 		 ClientRegistry.bindTileEntitySpecialRenderer(TileAutoEngineCore.class, new RenderEngine());
 		 ClientRegistry.bindTileEntitySpecialRenderer(TileTankEX.class, new RenderTank());
 		 ClientRegistry.bindTileEntitySpecialRenderer(TileFillerEX.class, new RenderFillerEX());
+		 ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfinityChest.class, new RenderInfinityChest());
          for(int i = 0; i < 9; ++i) {
             RenderingEntityBlocks.blockByEntityRenders.put(new EntityRenderIndex(AkutoEngine.engineBlock, i), new RenderEngine((ResourceLocation)AkutoEngine.RESOURCE_LOCATION_LIST.get(i), chamberResourceLocation, TileEngineBase.TRUNK_RED_TEXTURE));
          }

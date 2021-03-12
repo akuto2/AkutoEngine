@@ -1,100 +1,335 @@
 package akuto2.akutoengine.tiles;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
+import akuto2.akutoengine.gui.ContainerInfinityChest;
+import akuto2.akutoengine.packet.ItemCountMessage;
+import akuto2.akutoengine.packet.PacketHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import lib.utils.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityInfinityChest extends TileEntity implements ISidedInventory{
+public class TileEntityInfinityChest extends TileEntity implements IInventory{
+	private ItemStack contents;
+	private ItemStack[] inventory = new ItemStack[getSizeInventory()];
+	private BigInteger count = BigInteger.ZERO;
+	private ContainerInfinityChest container;
+	public static final BigInteger INT_MAX = BigInteger.valueOf(Integer.MAX_VALUE);
+
+	@Override
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
+		contents = readStackFromNBT(compound);
+		count = readCountFromNBT(compound);
+		updateInv();
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
+		setStackNBT(compound);
+	}
+
+	public static ItemStack readStackFromNBT(NBTTagCompound compound) {
+		if(compound == null || !compound.hasKey("item")) {
+			return null;
+		}
+		NBTTagCompound stackCompound = compound.getCompoundTag("item");
+		ItemStack stack = ItemStack.loadItemStackFromNBT(stackCompound);
+		return stack;
+	}
+
+	public static BigInteger readCountFromNBT(NBTTagCompound compound) {
+		if(compound == null || !compound.hasKey("count")) {
+			return BigInteger.ZERO;
+		}
+		BigDecimal decimal = BigDecimal.ZERO;
+		BigInteger size = BigInteger.ZERO;
+		try {
+			decimal = new BigDecimal(compound.getString("count"));
+		}
+		catch(NumberFormatException e) {
+			LogHelper.logError("TileEntityInfinityChest loading problem.");
+		}
+
+		if(decimal != BigDecimal.ZERO) {
+			try {
+				size = decimal.toBigIntegerExact();
+			}
+			catch(ArithmeticException e) {
+				LogHelper.logError("TileEntityInfinityChest loading problem.");
+			}
+		}
+		return size;
+	}
+
+	public NBTTagCompound setStackNBT(NBTTagCompound compound) {
+		if(contents != null) {
+			NBTTagCompound compound2 = new NBTTagCompound();
+			compound.setTag("item", contents.writeToNBT(compound2));
+			if(stacksEquals(contents, getStackInSlot(1))) {
+				ItemStack stack = getStackInSlot(1);
+				compound.setString("count", count.add(BigInteger.valueOf(stack.stackSize)).toString());
+			}
+			else {
+				compound.setString("count", count.toString());
+			}
+		}
+		return compound;
+	}
+
+	@Override
+	public Packet getDescriptionPacket() {
+		NBTTagCompound compound = new NBTTagCompound();
+		writeToNBT(compound);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, compound);
+	}
+
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+		readFromNBT(pkt.func_148857_g());
+	}
+
+	public void updateInv() {
+		ItemStack insert = getStackInSlot(0);
+		if(insert != null) {
+			if(isItemValidForSlot(0, insert)) {
+				addStack(insert);
+			}
+		}
+
+		if(contents != null) {
+			ItemStack out = getStackInSlot(1);
+			boolean outFlag = out == null || stacksEquals(contents, out);
+			int outStackSize = out != null ? out.stackSize : 0;
+			if(outFlag && outStackSize < contents.getMaxStackSize() && checkInteger(count, 0)) {
+				int sub = contents.getMaxStackSize() - outStackSize;
+				if(checkInteger(count, sub)) {
+					ItemStack stack = copyAmount(contents, contents.getMaxStackSize());
+					inventory[1] = stack;
+				}
+				else {
+					ItemStack stack = copyAmount(contents, count.intValueExact());
+					inventory[1] = stack;
+				}
+			}
+		}
+		else {
+			inventory[1] = null;
+		}
+
+		if(container != null) {
+			container.changeSlot();
+		}
+
+		if(worldObj != null && !worldObj.isRemote) {
+			PacketHandler.sendToPoint(new ItemCountMessage(this, getCount()));
+		}
+	}
+
+
+	public void addStack(ItemStack insertStack) {
+		addStack(insertStack, BigInteger.valueOf(insertStack.stackSize));
+	}
+
+	public void addStack(ItemStack insertStack, BigInteger add) {
+		count = count.add(add);
+		if(contents == null) {
+			contents = copyAmount(insertStack, 1);
+		}
+		inventory[0] = null;
+	}
+
+	public BigInteger decrStack(ItemStack stack, BigInteger limit) {
+		return decrStack(BigInteger.valueOf(stack.stackSize), limit);
+	}
+
+	public BigInteger decrStack(BigInteger subs, BigInteger limit) {
+		if(subs.compareTo(count) >= 0) {
+			subs = count;
+		}
+		else if(subs.compareTo(count) < 0) {
+			if(limit.compareTo(count) >= 0) {
+				subs = count;
+			}
+			else if(limit.compareTo(count) < 0) {
+				subs = limit;
+			}
+		}
+		count = count.subtract(subs);
+		if(count.signum() <= 0) {
+			contents = null;
+			count = BigInteger.ZERO;
+		}
+		updateInv();
+		return subs;
+	}
+
+	public void setStack(ItemStack stack, BigInteger size, boolean isBlockSet) {
+		if(isBlockSet) {
+			contents = copyAmount(stack, 1);
+			count = size;
+			markDirty();
+		}
+		else {
+			contents = stack;
+			count = size;
+		}
+	}
+
+	public ItemStack getStack() {
+		return getStack(INT_MAX.min(count).intValueExact());
+	}
+
+	public ItemStack getStack(int amount) {
+		return copyAmount(contents, amount);
+	}
+
+	public BigInteger getCount() {
+		return count;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void setCount(BigInteger count) {
+		this.count = count;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void setContents(ItemStack contents) {
+		this.contents = contents;
+	}
+
+	public void setContainer(ContainerInfinityChest container) {
+		this.container = container;
+	}
+
+	public boolean hasStack() {
+		if(contents != null && contents.stackSize <= 0 && count.compareTo(BigInteger.valueOf(0)) <= 0) {
+			contents = null;
+		}
+		return (contents != null);
+	}
+
+	private ItemStack copyAmount(ItemStack stack, int amount) {
+		if(stack == null) {
+			return null;
+		}
+		ItemStack copyStack = stack.copy();
+		copyStack.stackSize = amount;
+		return copyStack;
+	}
+
+	private boolean stacksEquals(ItemStack stack, ItemStack stack2) {
+		return (stack.getItem() == stack2.getItem()) && (stack.getItemDamage() == stack2.getItemDamage()) && ItemStack.areItemStackTagsEqual(stack, stack2);
+	}
+
+	private boolean checkInteger(BigInteger bigInteger, int i) {
+		return bigInteger.compareTo(BigInteger.valueOf(i)) > 0;
+	}
 
 	@Override
 	public int getSizeInventory() {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+		return 2;
 	}
 
 	@Override
-	public ItemStack getStackInSlot(int p_70301_1_) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+	public ItemStack getStackInSlot(int slot) {
+		return inventory[slot];
 	}
 
 	@Override
-	public ItemStack decrStackSize(int p_70298_1_, int p_70298_2_) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+	public ItemStack decrStackSize(int slot, int count) {
+		if(inventory[slot] != null) {
+			ItemStack stack;
+			if(slot == 1) {
+				decrStack(BigInteger.valueOf(count), BigInteger.valueOf(count));
+			}
+			if(inventory[slot].stackSize <= count) {
+				stack = inventory[slot];
+				inventory[slot] = null;
+				return stack;
+			}
+			else {
+				stack = inventory[slot].splitStack(count);
+				if(inventory[slot].stackSize == 0) {
+					inventory[slot] = null;
+				}
+				return stack;
+			}
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int p_70304_1_) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+	public ItemStack getStackInSlotOnClosing(int slot) {
+		if(inventory[slot] != null) {
+			ItemStack stack = inventory[slot];
+			inventory[slot] = null;
+			return stack;
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override
-	public void setInventorySlotContents(int p_70299_1_, ItemStack p_70299_2_) {
-		// TODO 自動生成されたメソッド・スタブ
+	public void setInventorySlotContents(int slot, ItemStack stack) {
+		inventory[slot] = stack;
+		markDirty();
+	}
 
+	@Override
+	public void markDirty() {
+		super.markDirty();
+		updateInv();
 	}
 
 	@Override
 	public String getInventoryName() {
-		// TODO 自動生成されたメソッド・スタブ
 		return null;
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		// TODO 自動生成されたメソッド・スタブ
 		return false;
 	}
 
 	@Override
 	public int getInventoryStackLimit() {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+		return 64;
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : player.getDistanceSq((double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D) <= 64.0D;
 	}
 
 	@Override
 	public void openInventory() {
-		// TODO 自動生成されたメソッド・スタブ
 
 	}
 
 	@Override
 	public void closeInventory() {
-		// TODO 自動生成されたメソッド・スタブ
-
+		setContainer(null);
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
-		// TODO 自動生成されたメソッド・スタブ
+	public boolean isItemValidForSlot(int slot, ItemStack stack) {
+		if(slot == 0) {
+			return contents == null || stacksEquals(contents, stack);
+		}
 		return false;
 	}
-
-	@Override
-	public int[] getAccessibleSlotsFromSide(int p_94128_1_) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	@Override
-	public boolean canInsertItem(int p_102007_1_, ItemStack p_102007_2_, int p_102007_3_) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
-	}
-
-	@Override
-	public boolean canExtractItem(int p_102008_1_, ItemStack p_102008_2_, int p_102008_3_) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
-	}
-
 }

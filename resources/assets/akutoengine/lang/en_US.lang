@@ -44,6 +44,7 @@ fillerPattern.13.name=Hoe Module
 fillerPattern.14.name=Quarry Module
 tile.tankEX.name=TankEX
 tile.fillerEX.name=FillerEX
+tile.infinityChest.name=Infinity Chest
 
 achievement.getAkutoEngine=Is this ... a wooden engine?
 achievement.getSuperEngine=§5The finest engine!§r
