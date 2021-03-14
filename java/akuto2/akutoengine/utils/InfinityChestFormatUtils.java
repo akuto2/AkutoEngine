@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import akuto2.akutoengine.proxies.ClientProxy;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.gui.GuiScreen;
 
 /**
  * InfinityChest用の数列フォーマットクラス
@@ -27,7 +28,13 @@ public class InfinityChestFormatUtils {
 
 	public static String formatStack(BigInteger size, boolean flag, String lang) {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(formatBigIntegerToString(size, lang));
+		if(!GuiScreen.isShiftKeyDown()) {
+			stringBuilder.append(formatBigIntegerToString(size, lang));
+		}
+		else {
+			stringBuilder.append(size.toString());
+		}
+
 		if(jpLang.equals(lang)) {
 			if(flag) {
 				stringBuilder.append("個");
