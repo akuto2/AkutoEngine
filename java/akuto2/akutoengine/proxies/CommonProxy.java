@@ -6,7 +6,7 @@ import net.minecraft.world.World;
 public class CommonProxy {
 	public CommonProxy(){}
 
-	public void initialize() {}
+	public void setupManuals() {}
 
 	public void registerRenderInformation(){}
 
@@ -15,6 +15,8 @@ public class CommonProxy {
 	public void initFiller(){}
 
 	public void registerFiller(FillerPatternCore pattern, int meta) {}
+
+	public void init() {}
 
 	public World getClientWorld(){
 		return null;

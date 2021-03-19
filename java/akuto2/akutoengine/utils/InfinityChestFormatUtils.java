@@ -23,12 +23,16 @@ public class InfinityChestFormatUtils {
 	}
 
 	public static String formatStack(BigInteger size, boolean flag) {
-		return formatStack(size, flag, ClientProxy.mc.gameSettings.language);
+		return formatStack(size, flag, true);
 	}
 
-	public static String formatStack(BigInteger size, boolean flag, String lang) {
+	public static String formatStack(BigInteger size, boolean flag, boolean shiftAllView) {
+		return formatStack(size, flag, shiftAllView, ClientProxy.mc.gameSettings.language);
+	}
+
+	public static String formatStack(BigInteger size, boolean flag, boolean shiftAllView, String lang) {
 		StringBuilder stringBuilder = new StringBuilder();
-		if(!GuiScreen.isShiftKeyDown()) {
+		if(!shiftAllView || !GuiScreen.isShiftKeyDown()) {
 			stringBuilder.append(formatBigIntegerToString(size, lang));
 		}
 		else {

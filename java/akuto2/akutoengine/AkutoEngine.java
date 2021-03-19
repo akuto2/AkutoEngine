@@ -16,6 +16,7 @@ import akuto2.akutoengine.event.ToolTipEvent;
 import akuto2.akutoengine.gui.GuiHandler;
 import akuto2.akutoengine.items.FillerManual;
 import akuto2.akutoengine.items.ItemAutoEngine;
+import akuto2.akutoengine.items.ItemBlockInfinityChest;
 import akuto2.akutoengine.items.ItemBlockTankEX;
 import akuto2.akutoengine.items.ItemFillerPattern;
 import akuto2.akutoengine.items.ItemPumpEX;
@@ -40,6 +41,7 @@ import akuto2.akutoengine.pattern.FillerTower;
 import akuto2.akutoengine.pattern.FillerUnderFill;
 import akuto2.akutoengine.player.PlayerHandler;
 import akuto2.akutoengine.proxies.CommonProxy;
+import akuto2.akutoengine.recipes.NBTShapedRecipe;
 import akuto2.akutoengine.tiles.TileEntityInfinityChest;
 import akuto2.akutoengine.tiles.TileFillerEX;
 import akuto2.akutoengine.tiles.TilePumpEX;
@@ -180,7 +182,7 @@ public class AkutoEngine {
 		register.register(TankEX, ItemBlockTankEX.class, "TankEX");
 		register.register(pumpEX, ItemPumpEX.class, "pumpEX");
 		BuilderAPI.schematicRegistry.registerSchematicBlock(pumpEX, SchematicPump.class, new Object[0]);
-		register.register(infinityChest, "infinityChest");
+		register.register(infinityChest, ItemBlockInfinityChest.class, "infinityChest");
 		register.register(fillerEX, "fillerEX");
 		register.register(fillerModule, "fillerModule");
 		registerFiller(new FillerFillAll(), "bbb", "bbb", "bbb", 0);
@@ -261,8 +263,8 @@ public class AkutoEngine {
 		GameRegistry.addRecipe(autoEngine2, "aaa", "aia", "aaa", 'a', autoEngine1, 'i', ironGear);
 		GameRegistry.addRecipe(autoEngine3, "dad", "aia", "dad", 'a', autoEngine2, 'd', diaGear, 'i', ironEngine);
 		GameRegistry.addRecipe(autoEngine4, "dad", "aia", "dad", 'a', autoEngine3, 'd', diaChip, 'i', ironEngine);
-		GameRegistry.addRecipe(autoEngine5, "gag", "aia", "gag", 'a', autoEngine4, 'g', goldORGate, 'i', ironEngine);
-		GameRegistry.addRecipe(autoEngine6, "dad", "aia", "dad", 'a', autoEngine5, 'd', diaORGate, 'i', ironEngine);
+		GameRegistry.addRecipe(new NBTShapedRecipe(autoEngine5, "gag", "aia", "gag", 'a', autoEngine4, 'g', goldORGate, 'i', ironEngine));
+		GameRegistry.addRecipe(new NBTShapedRecipe(autoEngine6, "dad", "aia", "dad", 'a', autoEngine5, 'd', diaORGate, 'i', ironEngine));
 		GameRegistry.addRecipe(superEngine1, "eae", "aia", "eae", 'a', autoEngine6, 'e', engineCore, 'i', ironEngine);
 		GameRegistry.addRecipe(superEngine2, "eae", "aea", "eae", 'a', superEngine1, 'e', engineCore2);
 		GameRegistry.addRecipe(new ItemStack(engineCore), " e ", "ece", " e ", 'e', engineChip, 'c', coreElementary1);
@@ -270,27 +272,28 @@ public class AkutoEngine {
 		GameRegistry.addRecipe(new ItemStack(fillerEX), "b", 'b', filler);
 		GameRegistry.addRecipe(filler, "b", 'b', fillerEX);
 		GameRegistry.addRecipe(new ItemStack(manualFiller), "gbg", "bab", "gbg", 'g', Blocks.glass, 'b', Blocks.brick_block, 'a', Items.book);
-		GameRegistry.addRecipe(pumpEX1, "tit", "gpg", "sis", 't', tank, 'g', ironANDGate, 'p', pump, 'i', ironFluidPipe, 's', new ItemStack(Items.dye, 1, 8));
+		GameRegistry.addRecipe(new NBTShapedRecipe(pumpEX1, "tit", "gpg", "sis", 't', tank, 'g', ironANDGate, 'p', pump, 'i', ironFluidPipe, 's', new ItemStack(Items.dye, 1, 8)));
 		GameRegistry.addRecipe(infinityPump, "tct", "wpl", "bgb", 't', TankEX, 'p', pumpEX1, 'c', engineCore2, 'w', Items.water_bucket, 'l', Items.lava_bucket, 'g', goldFluidPipe, 'b', new ItemStack(Items.dye, 1, 12));
-		GameRegistry.addRecipe(pumpEX2, "tgt", "apa", "sgs", 't', tank, 'g', goldFluidPipe, 'p', pumpEX1, 'a', goldANDGate, 's', new ItemStack(Items.dye, 1, 8));
-		GameRegistry.addRecipe(pumpEX3, "tdt", "apa", "sds", 't', tank, 'd', diamondFluidPipe, 'p', pumpEX2, 'a', diaANDGate, 's', new ItemStack(Items.dye, 1, 0));
+		GameRegistry.addRecipe(new NBTShapedRecipe(pumpEX2, "tgt", "apa", "sgs", 't', tank, 'g', goldFluidPipe, 'p', pumpEX1, 'a', goldANDGate, 's', new ItemStack(Items.dye, 1, 8)));
+		GameRegistry.addRecipe(new NBTShapedRecipe(pumpEX3, "tdt", "apa", "sds", 't', tank, 'd', diamondFluidPipe, 'p', pumpEX2, 'a', diaANDGate, 's', new ItemStack(Items.dye, 1, 0)));
 		GameRegistry.addRecipe(new ItemStack(TankEX), "eae", "ata", "eae", 'e', engineCore, 'a', engineCore2, 't', tank);
 		BuildcraftRecipeRegistry.assemblyTable.addRecipe("engineChip", Math.round(600000.0F * BuildCraftSilicon.chipsetCostMultiplier), new ItemStack(engineChip), new Object[]{redstoneChip, new ItemStack(heatPearl, 4), Blocks.lever});
 		if(isFinalType){
 			finalEngine = new ItemStack(engineBlock, 1, 8);
 			GameRegistry.addRecipe(finalEngine, "bab", "aea", "bab", 'e', superEngine2, 'b', Blocks.bedrock, 'a', engineCore2);
 			pumpEX4 = new ItemStack(pumpEX, 1, 4);
-			GameRegistry.addRecipe(pumpEX4, "tct", "dpd", "bcb", 't', TankEX, 'c', engineCore2, 'd', diaANDGate, 'p', pumpEX3, 'b', Blocks.bedrock);
+			GameRegistry.addRecipe(new NBTShapedRecipe(pumpEX4, "tct", "dpd", "bcb", 't', TankEX, 'c', engineCore2, 'd', diaANDGate, 'p', pumpEX3, 'b', Blocks.bedrock));
 		}
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		proxy.init();
 		PacketHandler.init();
 		Compat.init();
 	}
 
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		proxy.initialize();
+		proxy.setupManuals();
 		LogHelper.logInfo(manualFiller.getUnlocalizedName());
 		Compat.postInit();
 	}

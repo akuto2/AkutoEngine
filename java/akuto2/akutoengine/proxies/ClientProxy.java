@@ -8,6 +8,7 @@ import org.w3c.dom.Document;
 
 import akuto2.akutoengine.AkutoEngine;
 import akuto2.akutoengine.items.ManualInfo;
+import akuto2.akutoengine.renderer.RenderChestInfo;
 import akuto2.akutoengine.renderer.RenderFillerEX;
 import akuto2.akutoengine.renderer.RenderInfinityChest;
 import akuto2.akutoengine.renderer.RenderTankEX;
@@ -31,6 +32,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy{
 	private static ResourceLocation chamberResourceLocation = new ResourceLocation("buildcraftenergy:textures/blocks/engineStone/chamber.png");
@@ -41,7 +43,7 @@ public class ClientProxy extends CommonProxy{
 	public void registerRenderInformation(){}
 
 	@Override
-	public void initialize() {
+	public void setupManuals() {
 		readManuals();
 		initManualRecipes();
 	}
@@ -87,6 +89,11 @@ public class ClientProxy extends CommonProxy{
             RenderingEntityBlocks.blockByEntityRenders.put(new EntityRenderIndex(AkutoEngine.engineBlock, i), new RenderEngine((ResourceLocation)AkutoEngine.RESOURCE_LOCATION_LIST.get(i), chamberResourceLocation, TileEngineBase.TRUNK_RED_TEXTURE));
          }
          MinecraftForgeClient.registerItemRenderer(GameRegistry.findItem("AkutoEngine", "TankEX"), new RenderTankEX());
+	}
+
+	@Override
+	public void init() {
+		MinecraftForge.EVENT_BUS.register(new RenderChestInfo());
 	}
 
 	@Override

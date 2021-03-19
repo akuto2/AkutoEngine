@@ -87,7 +87,7 @@ public class BlockInfinityChest extends BlockContainer{
 		if(stack.hasTagCompound()) {
 			TileEntityInfinityChest chest = (TileEntityInfinityChest)createNewTileEntity(world, meta);
 			world.setTileEntity(x, y, z, chest);
-			NBTTagCompound compound = (NBTTagCompound)stack.getTagCompound().getTag("chestItem");
+			NBTTagCompound compound = (NBTTagCompound)stack.getTagCompound();
 			ItemStack chestItem = TileEntityInfinityChest.readStackFromNBT(compound);
 			BigInteger count = TileEntityInfinityChest.readCountFromNBT(compound);
 			chest.setStack(chestItem, count, true);
