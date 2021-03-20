@@ -46,6 +46,8 @@ tile.tankEX.name=TankEX
 tile.fillerEX.name=FillerEX
 tile.infinityChest.name=Infinity Chest
 
+inventory.infinityChest=Infinity Chest
+
 achievement.getAkutoEngine=Is this ... a wooden engine?
 achievement.getSuperEngine=§5The finest engine!§r
 achievement.getTank=2.3 million cups of liquid!

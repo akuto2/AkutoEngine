@@ -78,13 +78,13 @@ public class RenderChestInfo {
 		String chestData = InfinityChestFormatUtils.formatStack(count, true, false);
 		float scale = 0.01F;
 		GL11.glPushMatrix();
-		GL11.glTranslated(-player.posX, -player.posY, -player.lastTickPosZ);
+		GL11.glTranslated(-player.posX, -player.posY, -player.posZ);
 		GL11.glTranslatef(pos.blockX + 0.5F, pos.blockY + 0.5F, pos.blockZ + 0.5F);
 		int facing = pos.sideHit;
 		ForgeDirection direction = ForgeDirection.getOrientation(facing);
 		GL11.glTranslatef(0.5F * direction.offsetX, 0.5F * direction.offsetY, 0.5F * direction.offsetZ);
 		GL11.glNormal3f(0.0F, 1.0F, 0.0F);
-		GL11.glScalef(-scale, -scale, -scale);
+		GL11.glScalef(-scale, -scale, scale);
 		float rotationYaw = 0.0F;
 		if(facing == 2)
 			rotationYaw = 0.0F;

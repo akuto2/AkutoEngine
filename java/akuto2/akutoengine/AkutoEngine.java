@@ -94,7 +94,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
-@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.3.14", dependencies ="required-after:AkutoLib@[1.0.5,);required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
+@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.4.0", dependencies ="required-after:AkutoLib@[1.0.5,);required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
 public class AkutoEngine {
 	@Instance("AkutoEngine")
 	public static AkutoEngine instance;
@@ -271,6 +271,7 @@ public class AkutoEngine {
 		GameRegistry.addRecipe(new ItemStack(engineCore2), "aca", "cec", "aca", 'c', coreElementary1, 'e', coreElementary2, 'a', engineChip);
 		GameRegistry.addRecipe(new ItemStack(fillerEX), "b", 'b', filler);
 		GameRegistry.addRecipe(filler, "b", 'b', fillerEX);
+		GameRegistry.addRecipe(new ItemStack(infinityChest), "epe", "bcb", "ede", 'e', engineCore2, 'b', Blocks.beacon, 'p', Items.ender_pearl, 'c', Blocks.chest, 'd', Blocks.diamond_block);
 		GameRegistry.addRecipe(new ItemStack(manualFiller), "gbg", "bab", "gbg", 'g', Blocks.glass, 'b', Blocks.brick_block, 'a', Items.book);
 		GameRegistry.addRecipe(new NBTShapedRecipe(pumpEX1, "tit", "gpg", "sis", 't', tank, 'g', ironANDGate, 'p', pump, 'i', ironFluidPipe, 's', new ItemStack(Items.dye, 1, 8)));
 		GameRegistry.addRecipe(infinityPump, "tct", "wpl", "bgb", 't', TankEX, 'p', pumpEX1, 'c', engineCore2, 'w', Items.water_bucket, 'l', Items.lava_bucket, 'g', goldFluidPipe, 'b', new ItemStack(Items.dye, 1, 12));

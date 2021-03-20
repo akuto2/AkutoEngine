@@ -76,13 +76,7 @@ public class TileEntityInfinityChest extends TileEntity implements IInventory{
 		if(contents != null) {
 			NBTTagCompound compound2 = new NBTTagCompound();
 			compound.setTag("item", contents.writeToNBT(compound2));
-			if(stacksEquals(contents, getStackInSlot(1))) {
-				ItemStack stack = getStackInSlot(1);
-				compound.setString("count", count.add(BigInteger.valueOf(stack.stackSize)).toString());
-			}
-			else {
-				compound.setString("count", count.toString());
-			}
+			compound.setString("count", count.toString());
 		}
 		return compound;
 	}

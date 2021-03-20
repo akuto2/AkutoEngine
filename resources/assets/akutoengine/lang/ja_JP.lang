@@ -46,6 +46,8 @@ tile.tankEX.name=タンク改
 tile.fillerEX.name=フィラー改
 tile.infinityChest.name=無限チェスト
 
+inventory.infinityChest=無限チェスト
+
 achievement.getAkutoEngine=これは…木エンジン？
 achievement.getSuperEngine=§5最高級のエンジンを！§r
 achievement.getTank=230万杯の液体を！
