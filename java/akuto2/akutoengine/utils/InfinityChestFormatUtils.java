@@ -14,7 +14,7 @@ import net.minecraft.client.gui.GuiScreen;
 public class InfinityChestFormatUtils {
 	private static final String jpLang = "ja_JP";
 	private static final int maxJPFormatDigit = 73;
-	private static final int maxUSFormatDigit = 66;
+	private static final int maxUSFormatDigit = 67;
 	private static final String[] formatJPString = new String[] { "無量大数", "不可思議", "那由他", "阿僧祇", "恒河沙", "極", "載", "正", "澗", "溝", "穣", "𥝱", "垓", "京", "兆", "億", "万" };
 	private static final String[] formatUSString = new String[] { "Vigintillion", "Novemdecillion", "Octodecillion", "Septendecillion", "Sexdecillion", "Quindecillion", "Quattuordecillion", "Tredecillion", "Duodecillion", "Undecillion", "Decillion", "Nonillion", "Octillion", "Septillion", "Sextillion", "Quintillion", "Quadrillion", "Trillion", "Billion", "Million", "Thousand" };
 
@@ -66,6 +66,7 @@ public class InfinityChestFormatUtils {
 				for(int i = 0; i < formatJPString.length; i++) {
 					if(checkStringLength(stringLength, true, i + 1)) {
 						outString += formatJPString[i];
+						break;
 					}
 				}
 			}
@@ -81,6 +82,7 @@ public class InfinityChestFormatUtils {
 				for(int i = 0; i < formatUSString.length; i++) {
 					if(checkStringLength(stringLength, false, i + 1)) {
 						outString += formatUSString[i];
+						break;
 					}
 				}
 			}
@@ -89,7 +91,7 @@ public class InfinityChestFormatUtils {
 	}
 
 	private static boolean checkStringLength(int sizeLength, boolean isJP, int downValue) {
-		return sizeLength >= (isJP ? maxJPFormatDigit : maxUSFormatDigit) - ((isJP ? 4 : 3) * downValue);
+		return sizeLength >= (isJP ? maxJPFormatDigit : maxUSFormatDigit) - getDigitValue(isJP) * downValue;
 	}
 
 	private static String getFrontSize(String size, boolean isJP) {
@@ -103,7 +105,13 @@ public class InfinityChestFormatUtils {
 				return size;
 			}
 		}
-		int i = size.length() % (isJP ? 4 : 3);
+		int i = size.length() % getDigitValue(isJP);
+		if(i == 0)
+			i = getDigitValue(isJP);
 		return size.substring(0, i);
+	}
+
+	private static int getDigitValue(boolean isJP) {
+		return isJP ? 4 : 3;
 	}
 }

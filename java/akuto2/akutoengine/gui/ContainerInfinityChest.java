@@ -24,19 +24,19 @@ public class ContainerInfinityChest extends Container{
 		chest.setContainer(this);
 
 		addSlotToContainer(new InfinityChestLockSlot(guiInventory, 0, 12, 21));
-		addSlotToContainer(new InfinityChestSlot(tile, 0, 80, 63));
-		addSlotToContainer(new InfinityChestSlot(tile, 1, 134, 63));
+		addSlotToContainer(new InfinityChestSlot(tile, 0, 80, 55));
+		addSlotToContainer(new InfinityChestSlot(tile, 1, 134, 55));
 
 		changeSlot();
 
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 76 + i * 18));
 			}
 		}
 
 		for(int i = 0; i < 9; i++) {
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 134));
 		}
 	}
 

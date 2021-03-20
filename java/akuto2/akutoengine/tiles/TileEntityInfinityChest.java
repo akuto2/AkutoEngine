@@ -244,17 +244,21 @@ public class TileEntityInfinityChest extends TileEntity implements IInventory{
 	public ItemStack decrStackSize(int slot, int count) {
 		if(inventory[slot] != null) {
 			ItemStack stack;
-			if(slot == 1) {
-				decrStack(BigInteger.valueOf(count), BigInteger.valueOf(count));
-			}
+
 			if(inventory[slot].stackSize <= count) {
 				stack = inventory[slot];
+				if(slot == 1) {
+					decrStack(BigInteger.valueOf(count), BigInteger.valueOf(count));
+				}
 				inventory[slot] = null;
 				return stack;
 			}
 			else {
 				stack = inventory[slot].splitStack(count);
-				if(inventory[slot].stackSize == 0) {
+				if(slot == 1) {
+					decrStack(BigInteger.valueOf(count), BigInteger.valueOf(count));
+				}
+				if(inventory[slot] != null && inventory[slot].stackSize == 0) {
 					inventory[slot] = null;
 				}
 				return stack;

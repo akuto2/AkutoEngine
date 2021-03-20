@@ -24,13 +24,13 @@ public class GuiInfinityChest extends GuiContainer{
 		this.inventoryPlayer = inventoryPlayer;
 		chest = tile;
 		xSize = 176;
-		ySize = 166;
+		ySize = 158;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
 		fontRendererObj.drawString(StatCollector.translateToLocal("infinityChest.inventory"), 8, 5, 4210752);
-		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, 72, 4210752);
+		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, 64, 4210752);
 		if(chest.hasStack()) {
 			ItemStack stack = chest.getStack(1);
 			fontRendererObj.drawString(stack.getDisplayName(), 35, 16, 4210752);
