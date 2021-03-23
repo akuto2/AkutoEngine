@@ -108,7 +108,7 @@ public class NBTShapedRecipe extends ShapedRecipes{
 						return false;
 					}
 
-					if(!stack.isItemEqual(stack2) && !ItemStack.areItemStackTagsEqual(stack, stack2)) {
+					if(!stack.isItemEqual(stack2) || !ItemStack.areItemStackTagsEqual(stack, stack2)) {
 						return false;
 					}
 				}
