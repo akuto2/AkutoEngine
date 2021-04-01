@@ -6,7 +6,6 @@ import akuto2.akutoengine.AkutoEngine;
 import akuto2.akutoengine.tiles.TileEntityInfinityChest;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import lib.utils.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -99,18 +98,16 @@ public class StorageBoxEvent {
 		if(player.isSneaking()) {
 			int min = (player.getCurrentEquippedItem().getItem().equals(StorageBox.storageBox) && size > 1) ? 1 : 0;
 			stack.stackSize -= min;
-			chest.addStack(stack);
-			world.playSoundAtEntity((Entity)player, "random.pop", 0.5F, 1.4F);
-			size = min;
+			int result = chest.addStack(stack).intValueExact();
+			if(result + min < size)
+				world.playSoundAtEntity((Entity)player, "random.pop", 0.5F, 1.4F);
+			size = result + min;
 		}
 		else {
-			LogHelper.logError("Size:" + size);
 			int result = chest.decrStack(stack, BigInteger.valueOf(limit)).intValueExact();
-			LogHelper.logError("Result:" + result);
 			if(result > 0)
 				world.playSoundAtEntity((Entity)player, "random.pop", 0.5F, 1.0F);
 			size += result;
-			LogHelper.logError("Size:" + size);
 		}
 		return size;
 	}

@@ -94,7 +94,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
-@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.4.1", dependencies ="required-after:AkutoLib@[1.0.5,);required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
+@Mod (modid = "AkutoEngine", name = "AkutoEngine", version = "1.4.2", dependencies ="required-after:AkutoLib@[1.0.5,);required-after:BuildCraft|Energy;after:IC2;after:ProjectE;", useMetadata = true)
 public class AkutoEngine {
 	@Instance("AkutoEngine")
 	public static AkutoEngine instance;

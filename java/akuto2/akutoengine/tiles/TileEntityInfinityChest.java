@@ -131,19 +131,26 @@ public class TileEntityInfinityChest extends TileEntity implements IInventory{
 	}
 
 
-	public void addStack(ItemStack insertStack) {
-		addStack(insertStack, BigInteger.valueOf(insertStack.stackSize));
+	public BigInteger addStack(ItemStack insertStack) {
+		return addStack(insertStack, BigInteger.valueOf(insertStack.stackSize));
 	}
 
-	public void addStack(ItemStack insertStack, BigInteger add) {
+	public BigInteger addStack(ItemStack insertStack, BigInteger add) {
+		if(contents != null && insertStack != null && !stacksEquals(contents, insertStack)) {
+			return add;
+		}
 		count = count.add(add);
 		if(contents == null) {
 			contents = copyAmount(insertStack, 1);
 		}
 		inventory[0] = null;
+		return BigInteger.ZERO;
 	}
 
 	public BigInteger decrStack(ItemStack stack, BigInteger limit) {
+		if(contents != null && stack != null && !stacksEquals(contents, stack)) {
+			return BigInteger.ZERO;
+		}
 		return decrStack(BigInteger.valueOf(stack.stackSize), limit);
 	}
 
@@ -222,7 +229,15 @@ public class TileEntityInfinityChest extends TileEntity implements IInventory{
 		return copyStack;
 	}
 
+	private boolean contentsEquals(ItemStack stack) {
+		if(contents == null) {
+			return false;
+		}
+		return stacksEquals(contents, stack);
+	}
+
 	private boolean stacksEquals(ItemStack stack, ItemStack stack2) {
+		LogHelper.logInfo("Stack Check");
 		return (stack.getItem() == stack2.getItem()) && (stack.getItemDamage() == stack2.getItemDamage()) && ItemStack.areItemStackTagsEqual(stack, stack2);
 	}
 
