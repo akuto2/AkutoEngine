@@ -274,8 +274,9 @@ public class TileEntityAkutoEngineBase extends TileEngineBase_BC8 {
 			return extractPower(0L, receiver.getPowerRequested(), doExtract);
 
 		IEnergyStorage storage = getEnergyStorage(tile, currentDirection);
-		if(storage != null)
+		if(storage != null) {
 			return EnergyUtils.changeRFToMJ(extractPowerFE(0, storage.getMaxEnergyStored() - storage.getEnergyStored(), doExtract));
+		}
 
 		return 0L;
 	}
@@ -330,7 +331,7 @@ public class TileEntityAkutoEngineBase extends TileEngineBase_BC8 {
 
 	@Override
 	public long getCurrentOutput() {
-		return level * MjAPI.MJ;
+		return level;
 	}
 
 	@Override
@@ -340,7 +341,7 @@ public class TileEntityAkutoEngineBase extends TileEngineBase_BC8 {
 
 	@Override
 	public long maxPowerExtracted() {
-		return 10000L * getCurrentOutput();
+		return getCurrentOutput();
 	}
 
 	@Override
