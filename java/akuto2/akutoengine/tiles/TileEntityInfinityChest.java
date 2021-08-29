@@ -132,7 +132,9 @@ public class TileEntityInfinityChest extends TileEntity implements IInventory{
 
 
 	public BigInteger addStack(ItemStack insertStack) {
-		return addStack(insertStack, BigInteger.valueOf(insertStack.stackSize));
+		if(insertStack != null)
+			return addStack(insertStack, BigInteger.valueOf(insertStack.stackSize));
+		return BigInteger.ZERO;
 	}
 
 	public BigInteger addStack(ItemStack insertStack, BigInteger add) {
@@ -237,7 +239,6 @@ public class TileEntityInfinityChest extends TileEntity implements IInventory{
 	}
 
 	private boolean stacksEquals(ItemStack stack, ItemStack stack2) {
-		LogHelper.logInfo("Stack Check");
 		return (stack.getItem() == stack2.getItem()) && (stack.getItemDamage() == stack2.getItemDamage()) && ItemStack.areItemStackTagsEqual(stack, stack2);
 	}
 
@@ -298,8 +299,16 @@ public class TileEntityInfinityChest extends TileEntity implements IInventory{
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
-		inventory[slot] = stack;
-		markDirty();
+		if(slot == 1) {
+			inventory[slot] = stack;
+			markDirty();
+		}
+		else {
+			addStack(stack);
+			if(worldObj != null && !worldObj.isRemote) {
+				PacketHandler.sendToPoint(new ItemCountMessage(this, getCount()));
+			}
+		}
 	}
 
 	@Override
