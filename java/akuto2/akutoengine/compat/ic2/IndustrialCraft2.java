@@ -2,7 +2,7 @@ package akuto2.akutoengine.compat.ic2;
 
 import static akuto2.akutoengine.AkutoEngine.*;
 
-import akuto2.akutoengine.blocks.BlcokHEMFSU;
+import akuto2.akutoengine.blocks.BlockHEMFSU;
 import akuto2.akutoengine.blocks.BlockHUMFSU;
 import akuto2.akutoengine.blocks.BlockUMFSU;
 import akuto2.akutoengine.items.ItemBlockHemfsu;
@@ -21,7 +21,7 @@ public class IndustrialCraft2 {
 		register.register(umfsUint, ItemBlockUmfsu.class, "umfsUinit");
 		humfsUint = new BlockHUMFSU();
 		register.register(humfsUint, ItemBlockHumfsu.class, "humfsUinit");
-		hemfsUint = new BlcokHEMFSU();
+		hemfsUint = new BlockHEMFSU();
 		register.register(hemfsUint, ItemBlockHemfsu.class, "hemfsUinit");
 		GameRegistry.registerTileEntity(TileEntityUmfsu.class, "tile.umfsu");
 		GameRegistry.registerTileEntity(TileEntityHumfsu.class, "tile.humfsu");

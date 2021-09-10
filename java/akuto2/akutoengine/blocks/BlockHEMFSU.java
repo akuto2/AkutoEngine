@@ -17,7 +17,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 
-public class BlcokHEMFSU extends BlockUMFSU {
+public class BlockHEMFSU extends BlockUMFSU {
 	@SideOnly(Side.CLIENT)
 	private IIcon top;
 	@SideOnly(Side.CLIENT)
@@ -31,7 +31,7 @@ public class BlcokHEMFSU extends BlockUMFSU {
 	@SideOnly(Side.CLIENT)
 	private IIcon input_left;
 
-	public BlcokHEMFSU(){
+	public BlockHEMFSU(){
 		super();
 		setHardness(1.5F);
 		setStepSound(soundTypeMetal);
