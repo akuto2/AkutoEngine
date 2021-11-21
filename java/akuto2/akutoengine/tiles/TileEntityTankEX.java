@@ -21,6 +21,7 @@ import buildcraft.lib.net.PacketBufferBC;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -99,6 +100,24 @@ public class TileEntityTankEX extends TileBuildCraftEX implements ITickable, IFl
 
 			prev = tile;
 		}
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
+		if(compound.hasKey("tanks", 10)) {
+			tankManager.deserializeNBT(compound.getCompoundTag("tanks"));
+		}
+	}
+
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
+		NBTTagCompound tankCompound = tankManager.serializeNBT();
+		if(!tankCompound.hasNoTags()) {
+			compound.setTag("tanks", tankCompound);
+		}
+		return compound;
 	}
 
 	@Override
